@@ -1,5 +1,4 @@
 #include "send_tag_uwb.h"
-#include "anchor/comm_mac.h"
 #include "nrf_deca.h"
 
 static uint16_t destAnchor = 0x0000;

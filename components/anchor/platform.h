@@ -13,7 +13,9 @@
 #define __DEFINE_IRQ_FLAG	uint8_t is_nested_critical_region = 0
 
 #define __DISABLE_IRQ()   sd_nvic_critical_region_enter(&is_nested_critical_region)
+//#define __DISABLE_IRQ()   taskDISABLE_INTERRUPTS //maybe megoldas
 #define __ENABLE_IRQ()    sd_nvic_critical_region_exit(is_nested_critical_region)
+//#define __ENABLE_IRQ()   taskENABLE_INTERRUPTS //maybe megoldas
 
 // This should be aligne at 32 bit
 #define COMM_MAC_BUFFER_ELEMENT_SIZE    32

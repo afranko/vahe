@@ -1,7 +1,12 @@
 
-#include <math.h>
-#include "nrf_drv_gpiote.h"
+
 #include "nrf_deca.h"
+#include "math.h"
+#include "rtls.h"
+#include "freertos/timers.h"
+#include "deca_device_api.h"
+
+
 
 
 typedef uint64_t uint64;
@@ -11,6 +16,21 @@ typedef uint64_t uint64;
 
 //Frame control:
 #define FRAME_CONTROL_RTLS_BEACON	0x85
+#define PIN_NUM_MISO 22
+#define PIN_NUM_MOSI 21
+#define PIN_NUM_CLK 23
+#define PIN_NUM_CS 19
+#define SPI_PIN_NOT_USED -1
+#define SPI_MAX_TRANSFER_SIZE 2048
+
+#define SPI_CLOCK_SPEED_1M 1*1000*1000
+#define SPI_CLOCK_SPEED_8M 8*1000*1000
+#define SPI_CLOCK_SPEED_10M 10*1000*1000
+
+#define SPI_MODE_0 0
+
+
+
 
 #if (SPI0_ENABLED == 1)
 static const nrf_drv_spi_t m_spi_master_0 = NRF_DRV_SPI_INSTANCE(0);
@@ -18,19 +38,19 @@ static const nrf_drv_spi_t m_spi_master_0 = NRF_DRV_SPI_INSTANCE(0);
 
 /* Default communication configuration. We use here EVK1000's mode 4. See NOTE 1 below. */
 static dwt_config_t config = {
-		4,               /* Channel number. */
+		2,               /* Channel number. */
 		DWT_PRF_64M,     /* Pulse repetition frequency. */
-		DWT_PLEN_128,    /* Preamble length. */
-		DWT_PAC8,        /* Preamble acquisition chunk size. Used in RX only. */
-		18,               /* TX preamble code. Used in TX only. */
-		18,               /* RX preamble code. Used in RX only. */
-		0,               /* Use non-standard SFD (Boolean) */
-		DWT_BR_6M8,      /* Data rate. */
+		0x08,//DWT_PLEN_128,    /* Preamble length. */
+		2,//DWT_PAC8,        /* Preamble acquisition chunk size. Used in RX only. */
+		9,               /* TX preamble code. Used in TX only. */
+		9,               /* RX preamble code. Used in RX only. */
+		1,               /* Use non-standard SFD (Boolean) */
+		0,//DWT_BR_6M8,      /* Data rate. */
 		DWT_PHRMODE_STD, /* PHY header mode. */
-		(129 + 8 - 8)    /* SFD timeout (preamble length + 1 + SFD length - PAC size). Used in RX only. */
+		(1025+64-32)//(129 + 8 - 8)    /* SFD timeout (preamble length + 1 + SFD length - PAC size). Used in RX only. */
 };
 
-static uint8_t m_rx_data[TX_RX_BUF_LENGTH] = {0};
+//static uint8_t m_rx_data[TX_RX_BUF_LENGTH] = {0};
 
 
 #ifdef EVBOARD
@@ -72,25 +92,7 @@ uint64_t dwm1000_get_rx_timestamp_u64(void)
     return ts;
 }
 
-static uint32_t spi_master_init(void)
-{
-	nrf_drv_spi_config_t config =
-	{
-			.ss_pin       = NRF_DRV_SPI_PIN_NOT_USED,
-			.irq_priority = APP_IRQ_PRIORITY_LOW,
-			.orc          = 0xCC,
-			.frequency    = NRF_DRV_SPI_FREQ_1M,
-			.mode         = NRF_DRV_SPI_MODE_0,
-			.bit_order    = NRF_DRV_SPI_BIT_ORDER_MSB_FIRST,
-	};
-	config.sck_pin  = DW1000_SCK_PIN;
-	config.mosi_pin = DW1000_MOSI_PIN;
-	config.miso_pin = DW1000_MISO_PIN;
 
-	//	spi_config.SPI_Pin_SS = DW1000_SS_LED;
-
-	return nrf_drv_spi_init(&m_spi_master_0, &config, NULL);
-}
 
 uint16_t getTagAddress()
 {
@@ -100,129 +102,289 @@ uint16_t getTagAddress()
 
 void deca_sleep(unsigned int time_ms)
 {
-	nrf_delay_ms(time_ms);
+	vTaskDelay(time_ms/(0.1));//port_tick_ms
 }
 
-void initDW1000(void)
+esp_err_t initDW1000()
 {
-	uint32_t err_code = spi_master_init();
-	APP_ERROR_CHECK(err_code);
 
-	nrf_gpio_cfg_output(DW1000_SS_PIN);
-	nrf_gpio_pin_set(DW1000_SS_PIN);
-
-	nrf_gpio_cfg_input(DW1000_RST, NRF_GPIO_PIN_NOPULL);
-
-	nrf_gpio_cfg_input(DW1000_IRQ, NRF_GPIO_PIN_PULLDOWN);
-}
-
-void reset_DW1000(void)
-{
-	nrf_gpio_cfg_output(DW1000_RST);
-	nrf_gpio_pin_clear(DW1000_RST);
-	nrf_delay_ms(2);
-	nrf_gpio_cfg_input(DW1000_RST, NRF_GPIO_PIN_NOPULL);
-}
-
-void spi_set_rate_low(void)
-{
-	nrf_drv_spi_uninit(&m_spi_master_0);
-
-	nrf_drv_spi_config_t config =
+    if( spi_bus_initialize(VSPI_HOST, spi_buscfg, SPI_DMA_CHANNEL) != ESP_OK)
 	{
-			.ss_pin       = NRF_DRV_SPI_PIN_NOT_USED,
-			.irq_priority = APP_IRQ_PRIORITY_LOW,
-			.orc          = 0xCC,
-			.frequency    = NRF_DRV_SPI_FREQ_1M,
-			.mode         = NRF_DRV_SPI_MODE_0,
-			.bit_order    = NRF_DRV_SPI_BIT_ORDER_MSB_FIRST,
-	};
-	config.sck_pin  = DW1000_SCK_PIN;
-	config.mosi_pin = DW1000_MOSI_PIN;
-	config.miso_pin = DW1000_MISO_PIN;
-
-	nrf_drv_spi_init(&m_spi_master_0, &config, NULL);
-}
-
-void spi_set_rate_high(void)
-{
-	nrf_drv_spi_uninit(&m_spi_master_0);
-
-	nrf_drv_spi_config_t config =
+#if DEBUGMODE
+    	printf("Error at iattach device spi bus!!!\n spi_set_rate_low() 005_2_1 \n");
+#endif
+	}
+    //ESP_ERROR_CHECK(spi_err);
+	if( spi_bus_add_device(VSPI_HOST, spi_devcfg, spi_dev) != ESP_OK)
 	{
-			.ss_pin       = NRF_DRV_SPI_PIN_NOT_USED,
-			.irq_priority = APP_IRQ_PRIORITY_LOW,
-			.orc          = 0xCC,
-			.frequency    = NRF_DRV_SPI_FREQ_8M,
-			.mode         = NRF_DRV_SPI_MODE_0,
-			.bit_order    = NRF_DRV_SPI_BIT_ORDER_MSB_FIRST,
-	};
-	config.sck_pin  = DW1000_SCK_PIN;
-	config.mosi_pin = DW1000_MOSI_PIN;
-	config.miso_pin = DW1000_MISO_PIN;
-
-	nrf_drv_spi_init(&m_spi_master_0, &config, NULL);
-}
-
-decaIrqStatus_t decamutexon(void)
-{
-	uint8_t temp = 0;
-	sd_nvic_critical_region_enter(&temp);
-
-	return temp;
-}
-
-void decamutexoff(decaIrqStatus_t s)
-{
-	sd_nvic_critical_region_exit(s);
-}
-
-int writetospi(uint16 headerLength, const uint8 *headerBuffer, uint32 bodylength, const uint8 *bodyBuffer)
-{
-	uint8_t irqs = decamutexon();
-	nrf_gpio_pin_clear(DW1000_SS_PIN);
-
-	uint32_t err_code = nrf_drv_spi_transfer(&m_spi_master_0, (uint8 *)headerBuffer, headerLength, m_rx_data, 0);
-	if(err_code != NRF_SUCCESS)
-	{
-		simple_uart_putstring((const uint8_t *)"Write error - header (SPI).\n\r");
+#if DEBUGMODE
+		printf("Error at iattach device spi bus!!!\n spi_set_rate_low() 005_2_2 \n");
+#endif
 	}
 
-	err_code = nrf_drv_spi_transfer(&m_spi_master_0, (uint8 *)bodyBuffer, bodylength, m_rx_data, 0);
-	if(err_code != NRF_SUCCESS)
+
+
+    if(ESP_OK != gpio_set_direction(DW1000_RST, GPIO_MODE_INPUT))
+    {
+#if DEBUGMODE
+    	printf("Nem sikerult a set direction (initDWM) 005_2_3 \n");
+#endif
+    }
+    if( ESP_OK != gpio_pullup_dis(DW1000_RST))
+    {
+#if DEBUGMODE
+        printf("Nem sikerult a DWM rst pullup disable!!! (initDWM) 005_2_4 \n");
+#endif
+    }
+
+    if( ESP_OK != gpio_set_direction(DW1000_IRQ, GPIO_MODE_INPUT))
+    {
+#if DEBUGMODE
+		printf("Nem sikerult a DWM set dir!!! (initDWM) 005_2_5 \n");
+#endif
+    }
+
+    if( ESP_OK != gpio_pulldown_en(DW1000_IRQ))
 	{
-		simple_uart_putstring((const uint8_t *)"Write error - body (SPI).\n\r");
+#if DEBUGMODE
+		printf("Nem sikerult a DWM rst pulldown en!!! (initDWM) 005_2_6 \n");
+#endif
 	}
 
-	nrf_gpio_pin_set(DW1000_SS_PIN);
-	decamutexoff(irqs);
+
+    //ESP_ERROR_CHECK(spi_err);
+    return ESP_OK;
+}
+esp_err_t reset_DW1000(void)
+{
+    esp_err_t   rst_err;
+
+    rst_err = gpio_set_direction(DW1000_RST, GPIO_MODE_OUTPUT);
+    // There is no gpio clear function in the ESP library
+    if( rst_err != ESP_OK)
+    {
+        printf("Error at set to OUTPUT the RST pin!!!\n reset_DW1000() func.\n\n");
+        return rst_err;
+    }
+#if DEBUGMODE
+    printf("Atjutott az elso setdirection-on \n");
+#endif
+    rst_err = gpio_set_level(DW1000_RST, 0);
+#if DEBUGMODE
+    printf("Atjutott az elso setlevel-en \n");
+#endif
+
+    vTaskDelay(2000 / portTICK_PERIOD_MS);  // 2 ms delay
+#if DEBUGMODE
+    printf("Atjutott az taskdelay-en \n");
+#endif
+    gpio_set_direction(DW1000_RST, GPIO_MODE_INPUT);
+#if DEBUGMODE
+    printf("Atjutott az masodik setdirection-on \n");
+#endif
+    rst_err = gpio_pullup_dis(DW1000_RST);
+    if( rst_err != ESP_OK)
+    {
+#if DEBUGMODE
+        printf("Error at set the DW1000 RST pin!!!\n reset_DW1000() func.\n\n");
+#endif
+        return rst_err;
+    }
+#if DEBUGMODE
+    printf("Atjutott a pullup disable-on \n");
+#endif
+
+
+
+    //ESP_ERROR_CHECK(rst_err);
+    return rst_err;
+}
+
+
+esp_err_t spi_set_rate_low(void)
+{
+
+    esp_err_t           spi_err;
+
+    spi_err = spi_bus_remove_device(*spi_dev);
+    if( spi_err != ESP_OK)
+    {
+#if DEBUGMODE
+        printf("Error at remove the device from the SPI bus!!!\n spi_set_rate_low() func.\n\n");
+#endif
+    }
+
+    spi_bus_free(VSPI_HOST); // HSPI or VSPI ?? !!
+    if( spi_err != ESP_OK)
+    {
+#if DEBUGMODE
+        printf("Error at setting free the spi bus!!!\n spi_set_rate_low() func.\n\n");
+#endif
+    }
+    ESP_ERROR_CHECK(spi_err);
+
+    spi_buscfg->miso_io_num    = PIN_NUM_MISO;
+    spi_buscfg->mosi_io_num    = PIN_NUM_MOSI;
+    spi_buscfg->sclk_io_num    = PIN_NUM_CLK;
+    spi_buscfg->quadwp_io_num  = SPI_PIN_NOT_USED;     // Write Protect signal
+    spi_buscfg->quadhd_io_num  = SPI_PIN_NOT_USED;     // HoID signal
+    spi_buscfg->max_transfer_sz= SPI_MAX_TRANSFER_SIZE;
+
+    spi_devcfg->clock_speed_hz = SPI_CLOCK_SPEED_1M;  //Clock out at 1 MHz
+    spi_devcfg->mode           = SPI_MODE_0;         //SPI mode 0
+    spi_devcfg->spics_io_num   = PIN_NUM_CS;         //CS pin
+    spi_devcfg->queue_size     = SPI_QUEUE_SIZE;     //How many transaction able to queue at one time
+
+
+    spi_err = spi_bus_initialize(VSPI_HOST,	spi_buscfg, SPI_DMA_CHANNEL);
+    if( spi_err != ESP_OK)
+    {
+#if DEBUGMODE
+        printf("Error at initialize spi bus!!!\n spi_set_rate_low() func.\n\n");
+#endif
+    }
+    //Attach the device to the SPI bus
+    spi_err = spi_bus_add_device(VSPI_HOST, spi_devcfg, spi_dev);
+    if( spi_err != ESP_OK)
+    {
+#if DEBUGMODE
+        printf("Error at iattach device spi bus!!!\n spi_set_rate_low() func.\n\n");
+#endif
+    }
+    ESP_ERROR_CHECK(spi_err);
+    return spi_err;
+}
+
+esp_err_t spi_set_rate_high(void)
+{
+
+    esp_err_t           spi_err;
+
+    spi_err = spi_bus_remove_device(*spi_dev);
+    if( spi_err != ESP_OK)
+    {
+#if DEBUGMODE
+        printf("Error at remove the device from the SPI bus!!!\n spi_set_rate_high() func.\n\n");
+#endif
+    }
+
+    spi_bus_free(VSPI_HOST); // HSPI or VSPI ?? !!
+    if( spi_err != ESP_OK)
+    {
+#if DEBUGMODE
+        printf("Error at setting free the spi bus!!!\n spi_set_rate_high() func.\n\n");
+#endif
+    }
+    ESP_ERROR_CHECK(spi_err);
+
+    spi_buscfg->miso_io_num    = PIN_NUM_MISO;
+    spi_buscfg->mosi_io_num    = PIN_NUM_MOSI;
+    spi_buscfg->sclk_io_num    = PIN_NUM_CLK;
+    spi_buscfg->quadwp_io_num  = SPI_PIN_NOT_USED;     // Write Protect signal
+    spi_buscfg->quadhd_io_num  = SPI_PIN_NOT_USED;     // HoID signal
+    spi_buscfg->max_transfer_sz= SPI_MAX_TRANSFER_SIZE;
+
+    spi_devcfg->clock_speed_hz = SPI_CLOCK_SPEED_8M;  //Clock out at 8 MHz
+    spi_devcfg->mode           = SPI_MODE_0;         //SPI mode 0
+    spi_devcfg->spics_io_num   = PIN_NUM_CS;         //CS pin
+    spi_devcfg->queue_size     = SPI_QUEUE_SIZE;     //How many transaction able to queue at one time
+
+
+    spi_err = spi_bus_initialize(VSPI_HOST, spi_buscfg, SPI_DMA_CHANNEL);
+    if( spi_err != ESP_OK)
+    {
+#if DEBUGMODE
+        printf("Error at initialize spi bus!!!\n spi_set_rate_high() func.\n\n");
+#endif
+    }
+    //Attach the device to the SPI bus
+    spi_err = spi_bus_add_device(VSPI_HOST, spi_devcfg, spi_dev);
+    if( spi_err != ESP_OK)
+    {
+#if DEBUGMODE
+        printf("Error at iattach device spi bus!!!\n spi_set_rate_high() func.\n\n");
+#endif
+    }
+    ESP_ERROR_CHECK(spi_err);
+    return spi_err;
+}
+
+//decaIrqStatus_t decamutexon(void);
+portMUX_TYPE decamutexon(void)
+{
+	portMUX_TYPE in;
+	//uint8_t temp = 0;
+	//sd_nvic_critical_region_enter(&temp);
+	//taskENTER_CRITICAL(&in);
+	//taskENTER_CRITICAL();
+	taskDISABLE_INTERRUPTS();
+	return in;
+
+	//return temp;
+}
+
+//void decamutexoff(decaIrqStatus_t s)
+void decamutexoff(portMUX_TYPE in)
+{
+	//sd_nvic_critical_region_exit(s);
+	//taskEXIT_CRITICAL(&in);
+	//taskEXIT_CRITICAL();
+	taskENABLE_INTERRUPTS();
+}
+
+
+
+int writetospi(uint16_t headerLength, const uint8_t *headerBuffer, uint32_t bodylength, const uint8_t *bodyBuffer)
+{
+	static spi_transaction_t trans;	//TODO QUEUE-ban küldjük, mert az nagyobb szopás
+	uint8_t buff[bodylength + headerLength];
+	for(int i = 0; i < headerLength + bodylength;i++)
+		if(i < headerLength)
+			buff[i] = headerBuffer[i];
+		else
+			buff[i] = bodyBuffer[i - headerLength];
+
+	memset(&trans, 0, sizeof(spi_transaction_t));
+
+	trans.length = (headerLength*8 + bodylength*8);
+	trans.tx_buffer = buff;
+
+	esp_err_t ret = spi_device_transmit(*spi_dev, &trans);
+		if(ret != ESP_OK)
+			return -1;
+
+	printf("SPI WRITE\n");
 
 	return 0;
 }
 
-int readfromspi(uint16 headerLength,  const uint8 *headerBuffer, uint32 readlength, uint8 *readBuffer)
+
+
+
+
+int readfromspi(uint16_t headerLength, const uint8_t *headerBuffer, uint32_t readlength, uint8_t *readBuffer)
 {
-	uint8_t irqs = decamutexon();
-	nrf_gpio_pin_clear(DW1000_SS_PIN);
 
-	uint32_t err_code = nrf_drv_spi_transfer(&m_spi_master_0, (uint8 *)headerBuffer, headerLength, m_rx_data, headerLength);	
+	static spi_transaction_t trans;
 
-	if(err_code != NRF_SUCCESS)
-	{
-		simple_uart_putstring((const uint8_t *)"Write error - read header (SPI).\n\r");
-	}
 
-	err_code = nrf_drv_spi_transfer(&m_spi_master_0, m_rx_data, readlength, readBuffer, readlength);
-	if(err_code != NRF_SUCCESS)
-	{
-		simple_uart_putstring((const uint8_t *)"Read error (SPI).\n\r");
-	}
+	memset(&trans, 0, sizeof(spi_transaction_t));
 
-	nrf_gpio_pin_set(DW1000_SS_PIN);
-	decamutexoff(irqs);
+
+	trans.length = headerLength*8;
+	trans.rxlength = readlength*8;
+	trans.tx_buffer = headerBuffer;
+	trans.rx_buffer = readBuffer;
+
+	esp_err_t ret = spi_device_transmit(*spi_dev, &trans);
+	if(ret != ESP_OK)
+		return -1;
+
+
 
 	return 0;
 }
+
 
 
 
@@ -269,9 +431,9 @@ bool deca_twr_poll_msg()
 			if(initiator_rtls_beacon_receive_handler != NULL)
                 initiator_rtls_beacon_receive_handler(packet_info->src_addr, beacon_msg->hop_addr, beacon_msg->hop_count);
 		}
-		
+
 		mac_free_buffer(packet_info);
-		
+
 		return true;
 	}
 	else
@@ -293,77 +455,155 @@ void deca_twr_configure()
 int deca_twr_initiator(response_receive_handler_t handler, rtls_beacon_receive_handler_t beacon_handler)
 {
 	address = address & 0x0FFF;
-
 	initiator_response_receive_handler = handler;
+	#if DEBUGMODE
+	printf("Handler1 atadasa 005_1 \n");
+	#endif
 	initiator_rtls_beacon_receive_handler = beacon_handler;
+	#if DEBUGMODE
+	printf("Handler2 atadasa 005_2 \n");
+	#endif
 
-	initDW1000();
+	//Attach the device to the SPI bus
 
+	if(ESP_OK != initDW1000())
+	{
+		#if DEBUGMODE
+		printf("Megvolt az eszkoz init,nem sikerult 012 \n");
+		#endif
+	}
 	uint8_t tmp[600];
-	dwt_spicswakeup(tmp, 600);
+	if(ESP_OK != dwt_spicswakeup(tmp, 600))
+	{
+#if DEBUGMODE
+			printf("Megvolt a wakeup, nem sikerult 013 \n");
+#endif
+	}
+	if(ESP_OK != reset_DW1000())
+	{
+#if DEBUGMODE
+		printf("Megvolt a DW100 reset, nem sikerult 014 \n");
+#endif
+	}
+	else
+	{
+#if DEBUGMODE
+		printf("Megvolt a DW100 reset 014 \n");
+#endif
+	}
+		vTaskDelay(2000 / portTICK_PERIOD_MS);
 
-	reset_DW1000();
 
-	spi_set_rate_low();
-	int init_result = dwt_initialise(DWT_LOADUCODE);
-	spi_set_rate_high();
+	if(ESP_OK != spi_set_rate_low())
+	{
+#if DEBUGMODE
+			printf("Megvolt a setlow, nem sikerult 014 \n");
+#endif
+	}
+	if( 0 != dwt_initialise(DWT_LOADUCODE))
+	{
+#if DEBUGMODE
+		printf("Megvolt a dwt_initialise, nem sikerult 016 \n");
+#endif
+	}
+	if(ESP_OK != spi_set_rate_high())
+	{
+#if DEBUGMODE
+		printf("Megvolt a sethigh, nem sikerult 014 \n");
+#endif
+	}
+	else
+	{
+#if DEBUGMODE
+		printf("Megvolt a spi_set_rate_high 017 \n");
+#endif
+	}
+	int init_result;
+		init_result = dwt_configure(&config);
+#if DEBUGMODE
+	printf("Megvolt a dwt_configure, %d 018 \n",init_result);
+#endif
 
-	dwt_configure(&config);
-	
+
 	dwt_setrxmode(DWT_RX_SNIFF, 2, 24);
+#if DEBUGMODE
+	printf("Megvolt a dwt_setrxmode 019 \n");
+#endif
 
-	uint32 devid = dwt_readdevid();    
-	simple_uart_puthex((devid>>24)&0xFF);
-	simple_uart_puthex((devid>>16)&0xFF);
-	simple_uart_puthex((devid>>8)&0xFF);
-	simple_uart_puthex((devid)&0xFF);
-	simple_uart_putstring((const uint8_t *)"\n\r");
+
+	uint32_t devid = (uint32_t)dwt_readdevid();
+#if DEBUGMODE
+	printf("A devid : %X \n",devid);
+#endif
+
+
 
 	if(init_result == DWT_ERROR)
 	{
-		simple_uart_putstring((const uint8_t *)"Error on dwt_initialise!\n\r");
+#if DEBUGMODE
+		printf("Error on dwt_initialise! \n\r");
+#endif
 		return 1;
 	}
 
-	simple_uart_putstring((const uint8_t *)"Configured: ");
-	simple_uart_puthex((address>>8)&0xFF);
-	simple_uart_puthex((address)&0xFF);
-	simple_uart_putstring((const uint8_t *)"\n\r");
+	printf("Configured, address, jon a villogas :  %x \n",address);
 
     dwt_setleds(3);
-
+#if DEBUGMODE
+    printf("Morzsa 1 \n");
+#endif
 	dwt_setrxantennadelay(0);
+#if DEBUGMODE
+	printf("Morzsa 2 \n");
+#endif
 	dwt_settxantennadelay(0);
+#if DEBUGMODE
+	printf("Morzsa 3 \n");
+#endif
 
 	dwt_setrxaftertxdelay(POLL_TX_TO_RESP_RX_DLY_UUS);
+#if DEBUGMODE
+	printf("Morzsa 4 \n");
+#endif
 	dwt_setrxtimeout(0);
+#if DEBUGMODE
+	printf("Morzsa 5 \n");
+#endif
 
-//	dwt_write32bitreg(SYS_CFG_ID, SYS_CFG_DIS_DRXB | SYS_CFG_RXWTOE);
+	dwt_write32bitreg(SYS_CFG_ID, SYS_CFG_DIS_DRXB | SYS_CFG_RXWTOE);
+#if DEBUGMODE
+	printf("Morzsa 6 \n");
+#endif
 
 	int sys_cfg = dwt_read32bitreg(SYS_CFG_ID);
-	simple_uart_puthex((sys_cfg>>24)&0xFF);
-	simple_uart_puthex((sys_cfg>>16)&0xFF);
-	simple_uart_puthex((sys_cfg>>8)&0xFF);
-	simple_uart_puthex((sys_cfg)&0xFF);
-	simple_uart_putstring((const uint8_t *)"\n\r");
-
+#if DEBUGMODE
+	printf("A SYSCFG : %x \n",sys_cfg);
+#endif
+	//simple_uart_puthex((sys_cfg>>24)&0xFF);
+	//simple_uart_puthex((sys_cfg>>16)&0xFF);
+	//simple_uart_puthex((sys_cfg>>8)&0xFF);
+	//simple_uart_puthex((sys_cfg)&0xFF);
+	//simple_uart_putstring((const uint8_t *)"\n\r");
+	printf("Morzsa 7 \n");
 	dwt_setinterrupt(DWT_INT_TFRS | DWT_INT_RFCG | DWT_INT_ARFE | DWT_INT_RFSL | DWT_INT_SFDT | DWT_INT_RPHE | DWT_INT_RFCE | DWT_INT_RFTO | DWT_INT_RXPTO | DWT_INT_RXOVRR, 1);
 
-	int sys_mask = dwt_read32bitreg(SYS_MASK_ID);
-	simple_uart_puthex((sys_mask>>24)&0xFF);
-	simple_uart_puthex((sys_mask>>16)&0xFF);
-	simple_uart_puthex((sys_mask>>8)&0xFF);
-	simple_uart_puthex((sys_mask)&0xFF);
-	simple_uart_putstring((const uint8_t *)"\n\r");
-
+	//int sys_mask = dwt_read32bitreg(SYS_MASK_ID);
+	//simple_uart_puthex((sys_mask>>24)&0xFF);
+	//simple_uart_puthex((sys_mask>>16)&0xFF);
+	//simple_uart_puthex((sys_mask>>8)&0xFF);
+	//simple_uart_puthex((sys_mask)&0xFF);
+	//simple_uart_putstring((const uint8_t *)"\n\r");
+	printf("Morzsa 8 \n");
 	mac_init(address);
+	printf("Morzsa 9 \n");
 	dwt_setcallbacks(mac_txcallback_impl, mac_rxcallback_impl);
-
+	printf("Morzsa 10 \n");
 	dwt_txconfig_t configTx;
 	configTx.PGdly = 0x95;
 	configTx.power = 0x1A140E2E;
 	dwt_configuretxrf(&configTx);
-	
+	printf("Eljutott az initiator vegere \n");
+
 	return 0;
 }
 
@@ -395,23 +635,24 @@ int deca_twr_responder(void)
 
 	dwt_configure(&config);
 
-	uint32 devid = dwt_readdevid();    
-	simple_uart_puthex((devid>>24)&0xFF);
-	simple_uart_puthex((devid>>16)&0xFF);
-	simple_uart_puthex((devid>>8)&0xFF);
-	simple_uart_puthex((devid)&0xFF);
-	simple_uart_putstring((const uint8_t *)"\n\r");
+	//uint32 devid = dwt_readdevid();
+	//simple_uart_puthex((devid>>24)&0xFF);
+	//simple_uart_puthex((devid>>16)&0xFF);
+	//simple_uart_puthex((devid>>8)&0xFF);
+	//simple_uart_puthex((devid)&0xFF);
+	//simple_uart_putstring((const uint8_t *)"\n\r");
 
 	if(init_result == DWT_ERROR)
 	{
-		simple_uart_putstring((const uint8_t *)"Error on dwt_initialise!\n\r");	
+		printf("Error on dwt_initialise! \n\r");
 		return 1;
 	}
 
-	simple_uart_putstring((const uint8_t *)"Configured: ");
-	simple_uart_puthex((address>>8)&0xFF);
-	simple_uart_puthex((address)&0xFF);
-	simple_uart_putstring((const uint8_t *)"\n\r");
+	printf("Configured \n");
+	//simple_uart_putstring((const uint8_t *)"Configured: ");
+	//simple_uart_puthex((address>>8)&0xFF);
+	//simple_uart_puthex((address)&0xFF);
+	//simple_uart_putstring((const uint8_t *)"\n\r");
 
     dwt_setleds(3);
 
@@ -423,28 +664,28 @@ int deca_twr_responder(void)
 
 //	dwt_write32bitreg(SYS_CFG_ID, SYS_CFG_DIS_DRXB | SYS_CFG_RXWTOE);
 
-	int sys_cfg = dwt_read32bitreg(SYS_CFG_ID);
-	simple_uart_puthex((sys_cfg>>24)&0xFF);
-	simple_uart_puthex((sys_cfg>>16)&0xFF);
-	simple_uart_puthex((sys_cfg>>8)&0xFF);
-	simple_uart_puthex((sys_cfg)&0xFF);
-	simple_uart_putstring((const uint8_t *)"\n\r");
+	//int sys_cfg = dwt_read32bitreg(SYS_CFG_ID);
+	//simple_uart_puthex((sys_cfg>>24)&0xFF);
+	//simple_uart_puthex((sys_cfg>>16)&0xFF);
+	//simple_uart_puthex((sys_cfg>>8)&0xFF);
+	//simple_uart_puthex((sys_cfg)&0xFF);
+	//simple_uart_putstring((const uint8_t *)"\n\r");
 
 	dwt_setinterrupt(DWT_INT_TFRS | DWT_INT_RFCG | DWT_INT_ARFE | DWT_INT_RFSL | DWT_INT_SFDT | DWT_INT_RPHE | DWT_INT_RFCE | DWT_INT_RFTO | DWT_INT_RXPTO | DWT_INT_RXOVRR, 1);
 
-	int sys_mask = dwt_read32bitreg(SYS_MASK_ID);
-	simple_uart_puthex((sys_mask>>24)&0xFF);
-	simple_uart_puthex((sys_mask>>16)&0xFF);
-	simple_uart_puthex((sys_mask>>8)&0xFF);
-	simple_uart_puthex((sys_mask)&0xFF);
-	simple_uart_putstring((const uint8_t *)"\n\r");
+	//int sys_mask = dwt_read32bitreg(SYS_MASK_ID);
+	//simple_uart_puthex((sys_mask>>24)&0xFF);
+	//simple_uart_puthex((sys_mask>>16)&0xFF);
+	//simple_uart_puthex((sys_mask>>8)&0xFF);
+	//simple_uart_puthex((sys_mask)&0xFF);
+	//simple_uart_putstring((const uint8_t *)"\n\r");
 
 	mac_init(address);
 	dwt_setcallbacks(mac_txcallback_impl, mac_rxcallback_impl);
 
 //	uint8_t t = 0x95;
 //	dwt_writetodevice(TX_CAL_ID, TC_PGDELAY_OFFSET, 1, &t);
-	
+
 	dwt_txconfig_t configTx;
 	configTx.PGdly = 0x95;
 	configTx.power = 0x1A140E2E;
@@ -452,16 +693,49 @@ int deca_twr_responder(void)
 
 /*
 	dwt_configcontinuousframemode(21300);
-	
+
 	dwt_write32bitreg(SYS_STATUS_ID, SYS_STATUS_TXFRS);
 	dwt_writetxdata(sizeof(rtls_beacon_msg), rtls_beacon_msg, 0);
 	dwt_writetxfctrl(sizeof(rtls_beacon_msg), 0);
 
 	dwt_starttx(DWT_START_TX_IMMEDIATE );
 */
-
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

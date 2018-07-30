@@ -2,8 +2,8 @@
 #define __MAC_H_
 
 #include <stdint.h>
-#include "decadriver/deca_device_api.h"
-#include "decadriver/deca_regs.h"
+#include "deca_device_api.h"
+#include "deca_regs.h"
 #include "queue.h"
 #include "misc.h"
 

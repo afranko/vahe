@@ -9,6 +9,7 @@
 
 spi_device_t* spi;
 
+// TODO inkább \CS -> GPIO megoldással kell megoldani és akkor lehet full-duplex + DMA
 
 spi_bus_config_t buscfg = {
 		.miso_io_num = PIN_NUM_MISO,

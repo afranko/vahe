@@ -33,7 +33,7 @@ static gpio_config_t io_conf;
 /* ---------------------------- */
 
 /**
- *
+ *  
  */
 static void IRAM_ATTR chr_isr_handler(void *arg)
 {
@@ -41,7 +41,7 @@ static void IRAM_ATTR chr_isr_handler(void *arg)
     if(gpio_get_level((gpio_num_t) arg))
     {
         /* 1.5A enabled */
-        gpio_set_level(CHR_EN1_SEL, GPIO_LOW);
+        gpio_set_level(CHR_EN1_SEL, GPIO_LOW);  //TUTTI?
         gpio_set_level(CHR_EN2_SEL, GPIO_HIGH);
         ESP_LOGD(TAG, "CHG ISR:\nInput: LOW\nEN1: HIGH\nEN2: LOW\n");
     }
@@ -78,7 +78,7 @@ esp_err_t chg_init(void)
     io_conf.pull_down_en = 1;
     io_conf.pull_up_en = 0;
     esp_error_indicator = gpio_config(&io_conf);
-    ESP_ERROR_CHECK(gpio_config(&io_conf));
+    ESP_ERROR_CHECK(esp_error_indicator); //TODO
 
     /* CHR_EN1 Pin settings and preset */
     io_conf.intr_type = GPIO_PIN_INTR_DISABLE;
@@ -110,6 +110,10 @@ esp_err_t chg_init(void)
 }
 
 //TODO + NOTE
+
+/**
+ *
+ */
 void chg_adc_isr_on_callback(void)
 {
     ESP_LOGD(TAG, "Charger-ADC ISR ON callback is called!");

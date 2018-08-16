@@ -7,7 +7,7 @@
 /* Includes */
 /* -------- */
 
-#include "platform/platform.h"     // MCU and Pin Definitions in one place
+#include "platform.h"     // MCU and Pin Definitions in one place
 #include <limits.h>
 //#include <sys/time.h> //TODO+NOTE
 #include <time.h>
@@ -36,6 +36,8 @@
     #error "Values of prescaler (voltage divider) resitors aren't set or bigger then 255!"
 #endif
 
+//TODO BTR_SAMPLE SETTING should go to KONFIG.proj
+
 #ifdef BTR_SAMPLE_NUM
     #if (BTR_SAMPLE_NUM == 0)
         #error "Number of samples has to be greater than zero! - Use 'U' after the number!"
@@ -46,7 +48,7 @@
 #endif
 
 #if (!defined BTR_SAMPLE_NUM)
-    #warning "Number of samples for battery measurement is not set. If you don't set it, then default value shall be used! - Use 'U' after the number!"
+    #warning "Number of samples for battery measurement is not set. If you don't set it, then default value shall be used! - Use 'U' after the number literal!"
     #define BTR_SAMPLE_NUM  1U
 #endif
 

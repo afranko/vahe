@@ -16,7 +16,7 @@ void chg_adc_isr_on_callback(void);
 //TODO
 inline void chg_adc_isr_off_callback(void) {
     ESP_LOGD(TAG, "Charger-ADC ISR OFF callback is called!");
-    ESP_ERROR_CHECK(gpio_isr_handler_remove(CHR_INPUT_SEL));
+    ESP_ERROR_CHECK(gpio_isr_handler_remove(CHR_INPUT_SEL));    //TODO ez se biztos, hogy jó így
 }
 
 #endif  /* __CHARGER_MGMT_H */

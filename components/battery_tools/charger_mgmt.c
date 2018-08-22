@@ -33,7 +33,7 @@ static gpio_config_t io_conf;
 /* ---------------------------- */
 
 /**
- *  
+ *
  */
 static void IRAM_ATTR chr_isr_handler(void *arg)
 {
@@ -117,5 +117,5 @@ esp_err_t chg_init(void)
 void chg_adc_isr_on_callback(void)
 {
     ESP_LOGD(TAG, "Charger-ADC ISR ON callback is called!");
-    ESP_ERROR_CHECK(gpio_isr_handler_add(CHR_INPUT_SEL, chr_isr_handler, (void*)));
+    ESP_ERROR_CHECK(gpio_isr_handler_add(CHR_INPUT_SEL, chr_isr_handler, (void*))); //TODO, ez se biztos, hogy jó  így
 }

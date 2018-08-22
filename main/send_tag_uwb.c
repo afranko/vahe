@@ -1,7 +1,11 @@
 #include "send_tag_uwb.h"
+#include "anchor/comm_mac.h"
 #include "nrf_deca.h"
+#include "freertos/FreeRTOS.h"
 
 static uint16_t destAnchor = 0x0000;
+
+extern int tcpSocket;
 
 void init_ranging_msg(rangingMessage *msg, uint16_t tag_id)
 {
@@ -52,9 +56,50 @@ void pts_ranging_uwb(rangingMessage *msg, uint64_t tStamp, uint8_t serializedMsg
 
 	//#error "0xDEAD a prefix! WiFi modulban át kell állítani"
 
-	destAnchor = nearestAnchor(msg);
+	//TODO WIFI -> SEND
+	//Wifi.write(SERVERIP, serializedMsg);
+
+
+	/*destAnchor = nearestAnchor(msg);
 	if(msg->length <= 10U)
-		mac_send_results(serializedMsg, 16U + msg->length * 5U, destAnchor);
+		mac_send_results(serializedMsg, 16U + msg->length * 5U, destAnchor);*/
+
+	uint8_t prefix[3] = {0xc5, 0xab, 0xa0};
+
+	//int fucked_packet_cnt = 0;
+	if(write(tcpSocket, prefix, 3) < 3)
+	{
+		printf("... Send failed THAT BODY\n");
+		/*vTaskDelay(4000 / portTICK_PERIOD_MS);
+		if(fucked_packet_cnt++ > 2)
+		{
+			close(tcpSocket);
+			socket_init();
+			msg->length = 0;
+			return;
+		}*/
+		msg->length = 0;
+		return;
+	}
+	else{
+		printf("SEND OK\n");
+	}
+
+	if( write(tcpSocket, serializedMsg, 16U + (msg->length * 5U)) < (16U + (msg->length * 5U)))
+	{
+		printf("... Send failed THIS BODY\n");
+		/*vTaskDelay(4000 / portTICK_PERIOD_MS);
+		if(fucked_packet_cnt++ > 3)
+		{
+			close(tcpSocket);
+			socket_init();
+			msg->length = 0;
+			return;			}*/
+		msg->length = 0;
+		return;
+	}
+	else
+		printf("SEND OK\n");
 
 	msg->length = 0;
 }

@@ -64,5 +64,13 @@
 
 #define DEAD_BEEF			    0xDEADBEEF					/**< Value used as error code on stack dump, can be used to identify stack location on stack unwind. */
 
+/* NEWS */
+
+#define MEASURE_TICKNUM			1000
+#define BEACON_TICKNUM			100
+#define TS_TICKNUM				10
+#define RANGING_RX_TICKNUM		100
+#define BEACON_RX_TICKNUM		110
+
 #endif /* COMMONS_H_ */
 

@@ -1,0 +1,9 @@
+menu "Address Selector"
+
+config DECA_ADDRESS
+    hex "Device Address"
+    default "0xDEAD"
+    help
+            Anchor/Tag MAC address settings can't be blank.
+
+endmenu

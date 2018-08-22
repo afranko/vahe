@@ -4,6 +4,22 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include <netinet/in.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include "esp_wifi.h"
+#include "esp_event_loop.h"
+#include "freertos/event_groups.h"
+#include "esp_system.h"
+#include "esp_log.h"
+#include "lwip/err.h"
+#include "lwip/sockets.h"
+#include "lwip/sys.h"
+#include "lwip/netdb.h"
+#include "lwip/dns.h"
+#include "lwip/ip4_addr.h"
+#include "wifi_con.h"
+
 typedef struct mac_send_ranging_package_t
 {
 	uint16_t 		anchorID;

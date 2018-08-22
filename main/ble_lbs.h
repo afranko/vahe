@@ -3,8 +3,6 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "ble.h"
-#include "ble_srv_common.h"
 
 #define LBS_UUID_BASE {0x23, 0xD1, 0xBD, 0x9A, 0x5E, 0x78, 0x40, 0x16, 0xDE, 0xF9, 0x16, 0x17, 0x00, 0x00, 0x00, 0x00}
 #define LBS_UUID_SERVICE 			0x1640
@@ -38,9 +36,6 @@ typedef struct
 typedef struct ble_lbs_s
 {
 	uint16_t                    service_handle;
-	ble_gatts_char_handles_t    ranging_char_handles;
-	ble_gatts_char_handles_t    anchorlist_char_handles;
-	ble_gatts_char_handles_t    mpu_char_handles;
 	uint8_t                     uuid_type;
 	uint16_t                    conn_handle;
 
@@ -69,16 +64,6 @@ extern ble_lbs_t    m_lbs;
  * @return      NRF_SUCCESS on successful initialization of service, otherwise an error code.
  */
 uint32_t ble_lbs_init(ble_lbs_t * p_lbs, const ble_lbs_init_t * p_lbs_init);
-
-/**@brief Function for handling the Application's BLE Stack events.
- *
- * @details Handles all events from the BLE stack of interest to the LED Button Service.
- *
- *
- * @param[in]   p_lbs      LED Button Service structure.
- * @param[in]   p_ble_evt  Event received from the BLE stack.
- */
-void ble_lbs_on_ble_evt(ble_lbs_t * p_lbs, ble_evt_t * p_ble_evt);
 
 int ble_lbs_get_buffer_count();
 int ble_lbs_get_buffer_drop_count();

@@ -17,27 +17,18 @@
 #include "dw_tag.h"
 #include "dw_anchor.h"
 
+#ifdef TAG_MODE
 #include "wifi_con.h"
+#endif
 
 #include "commons.h"
 
-//  debugging with gdb: ./JLinkGDBServer -if SWD -device nRF51822
-//  ./arm-none-eabi-gdb --tui /home/strauss/munka/ble-decawave/nRF51_SDK_10.0.0_dc26b5e/examples/ble-decawave-tag/ble_app_deca/dev_deca_bt/s110/armgcc/_build/nrf51822_xxac_s110_res.out
-//	(gdb) target remote localhost:2331
-//	(gdb) load /home/strauss/munka/ble-decawave/nRF51_SDK_10.0.0_dc26b5e/examples/ble-decawave-tag/ble_app_deca/dev_deca_bt/s110/armgcc/_build/nrf51822_xxac_s110_res.out
-//	(gdb) monitor reset/go/halt
-//	(gdb) monitor memU8 <memory_address>
+#define CHG_DET	39
+#define CHG_LO	26
+#define CHG_HI	27
 
-#define TAG_MODE
-//#define ANCHOR_MODE
+extern SemaphoreHandle_t xSemaphore;
 
-#if (!defined TAG_MODE) && (!defined ANCHOR_MODE)
-	#error "MODE is undefined! Define TAG or ANCHOR MODE!"
-#endif
-
-#if (defined TAG_MODE) && (defined ANCHOR_MODE)
-	#error "Both MODE TAG and MODE ANCHOR is defined!"
-#endif
 
 const char intArray[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
@@ -54,16 +45,14 @@ void vTimerCallback(TimerHandle_t pxTimer)
 {
 	switch((uint32_t) pvTimerGetTimerID(pxTimer))
 	{
+#ifdef TAG_MODE
 	case 0:
 		measurement_timeout_handler();
 		break;
-	case 1:
-		beacon_timeout_handler();
-		break;
 	case 2:
 		ts_timeout_handler();
-#ifdef TAG_MODE
-		if((wifi_conn_cnt % 10000) == 0) //M ideiglenes megoldas a wifi connect checkelesre, illetve a battery kiolvasasara, de erdemes lenne neki majd ij timert kesziteni
+
+		if((wifi_conn_cnt % 10000) == 0)
 		{
 			if(connection_check())
 				ets_printf("Wifi connected \n");
@@ -71,14 +60,19 @@ void vTimerCallback(TimerHandle_t pxTimer)
 				ets_printf("Wifi cant reconnect \n");
 		}
 		wifi_conn_cnt++;
-#endif
 		break;
+#endif
 	case 10:
 		gpio_set_level(GPIO_NUM_2, blinker);
 		blinker = !blinker;
 		break;
+	case 1:
+		//if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
+			beacon_timeout_handler();
+		//	xSemaphoreGive(xSemaphore);
+		//}
+		break;
 	default:
-		//printf("TIMER CB DEFAULT CASE -> WTF!\n");
 		break;
 	}
 }
@@ -87,11 +81,15 @@ static void timers_init(void)
 {
     printf("Timer Init OK.\n\r");
 
+#ifdef TAG_MODE
+
     xTimers[0] = xTimerCreate("measurement_timer", MEASURE_TICKNUM/portTICK_PERIOD_MS, pdTRUE , (void*)0, vTimerCallback);
+    xTimers[2] = xTimerCreate("ts_timer", TS_TICKNUM/portTICK_PERIOD_MS, pdTRUE , (void*)2, vTimerCallback);
+    init_rx_timeout_timer();
+
+#endif
 
     xTimers[1] = xTimerCreate("beacon_timer", BEACON_TICKNUM/portTICK_PERIOD_MS, pdTRUE , (void*)1, vTimerCallback);
-
-    xTimers[2] = xTimerCreate("ts_timer", TS_TICKNUM/portTICK_PERIOD_MS, pdTRUE , (void*)2, vTimerCallback);
 
     gpio_config_t io_conf;
     io_conf.intr_type = GPIO_PIN_INTR_DISABLE;	//TODO+NOTE most akkor posedge negedge vagy high????
@@ -102,10 +100,7 @@ static void timers_init(void)
    	gpio_config(&io_conf);
 
    	gpio_set_level(GPIO_NUM_2, 0);
-
     blinkTimer = xTimerCreate("blink_timer", 500/portTICK_PERIOD_MS, pdTRUE, (void*)10, vTimerCallback);
-
-    init_rx_timeout_timer();
 }
 
 typedef struct
@@ -126,7 +121,6 @@ static void measurement_update_handler(ble_lbs_t *p_lbs, uint8_t new_state)
     case 	START_RANGING:
         if(!m_measurement_timer_on)
         {
-//			nrf_gpio_pin_set(LED_0);
         	xTimerStart(xTimers[0], 0);	//TODO+NOTE
             m_measurement_timer_on = true;
         }
@@ -134,7 +128,6 @@ static void measurement_update_handler(ble_lbs_t *p_lbs, uint8_t new_state)
     case	STOP_RANGING:
         if(p_lbs->is_ranging_notification_enabled == false)
         {
-//			nrf_gpio_pin_clear(LED_0);
             xTimerStop(xTimers[0], 0);		//TODO+NOTE
             m_measurement_timer_on = false;
         }
@@ -159,7 +152,6 @@ static void services_init(void)
 
 static void advertising_init(void)
 {
-
     uint8_t mac[] = {0x01, 0x02, 0x03, 0x04};
     manuf_info_t manuf_info;
     manuf_info.type = 0x01;
@@ -173,36 +165,62 @@ static bool dwt_isr_in_progress = false;
 
 static void IRAM_ATTR gpiote_event_handler(void *arg)
 {
-	//ets_printf("IT IS CUMIN!\n");
-    if((uint32_t) arg == DW1000_IRQ)
+    switch((uint32_t) arg)
     {
+    case DW1000_IRQ:
+    	;
     	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
     	vTaskNotifyGiveFromISR(xTaskToNotify, &xHigherPriorityTaskWoken);
-        //app_timer_cnt_get(&dw_timestamp);	//NOTE nincs local time-unk egyel�re
-
-        /*if(gpio_get_level(DW1000_IRQ) == 1 && !dwt_isr_in_progress)	//TODO while()
-        {
-        	ets_printf("I'M THE ONE BABY!\n");
-            dwt_isr_in_progress = true;
-            dwt_isr();
-
-            while(deca_twr_poll_msg()){}
-            dwt_isr_in_progress = false;
-        }*/
+    	break;
+    case CHG_DET:
+    		if(gpio_get_level(CHG_DET) == 1) {
+    			gpio_set_level(CHG_LO, 0);
+    			gpio_set_level(CHG_HI, 1);
+    			xTimerStop(blinkTimer, 0);
+    			gpio_set_level(GPIO_NUM_2, 1);
+    			ets_printf("CHG LIKE HELL\n");	// FAST CHARGER
+    		}
+    		else {
+    			gpio_set_level(CHG_LO, 1);
+    			gpio_set_level(CHG_HI, 0);
+    			gpio_set_level(GPIO_NUM_2, 0);
+    			xTimerStart(blinkTimer, 0);
+    			ets_printf("CHG SLOW");
+    		}
+    	break;
+    default:
+    	break;
     }
 }
 
 static void gpiote_init(void)
 {
 	gpio_config_t io_conf;
-	io_conf.intr_type = GPIO_PIN_INTR_POSEDGE;	//TODO+NOTE most akkor posedge negedge vagy high????
+	io_conf.intr_type = GPIO_PIN_INTR_POSEDGE;
 	io_conf.mode = GPIO_MODE_INPUT;
 	io_conf.pin_bit_mask = ( 1ULL << DW1000_IRQ);
 	io_conf.pull_down_en = 1;
 	io_conf.pull_up_en = 0;
 	gpio_config(&io_conf);
-	ESP_ERROR_CHECK(gpio_install_isr_service(ESP_INTR_FLAG_IRAM));	//TODO + ezt meg kell n�zni
+	ESP_ERROR_CHECK(gpio_install_isr_service(ESP_INTR_FLAG_IRAM));
 	ESP_ERROR_CHECK(gpio_isr_handler_add(DW1000_IRQ, gpiote_event_handler, (void*) DW1000_IRQ));
+
+	/* Faszt Charging */
+	io_conf.intr_type = GPIO_PIN_INTR_ANYEDGE;
+	io_conf.mode = GPIO_MODE_INPUT;
+	io_conf.pin_bit_mask = ( 1ULL << CHG_DET);
+	io_conf.pull_down_en = 0;
+	io_conf.pull_up_en = 0;
+	gpio_config(&io_conf);
+	ESP_ERROR_CHECK(gpio_isr_handler_add(CHG_DET, gpiote_event_handler, (void*) CHG_DET));
+
+	io_conf.intr_type = GPIO_PIN_INTR_DISABLE;
+	io_conf.mode = GPIO_MODE_OUTPUT;
+	io_conf.pin_bit_mask = ( 1ULL << CHG_LO);
+	gpio_config(&io_conf);
+
+	io_conf.pin_bit_mask = ( 1ULL << CHG_HI);
+	gpio_config(&io_conf);
 }
 
 /******************************************************************************************************************************************************/
@@ -218,50 +236,36 @@ static void start_tag()
 
     xTimerStart(blinkTimer, 0);
 
-    //twi_init();
-    //uint8_t data = 0x40; //MPU-hoz ezt a három sort ki kell kommentezni, meg felső részt vissza, meg az mpu opent
-    //i2c_write(0x68, 0x6B, 1, &data);
-    //twi_disable();
-    //mpu_open();
-
     printf("Start!\n");
-
-    //int t = deca_twr_initiator(response_receive_handler, rtls_beacon_receive_handler);
 
     deca_twr_initiator(response_receive_handler, rtls_beacon_receive_handler);
     gpiote_init();
-
-    //if(t != 0)
-    //    nrf_gpio_pin_set(LED_1);
-
-    //dwt_configuresleep(DWT_PRESRV_SLEEP | DWT_CONFIG, DWT_WAKE_CS | DWT_SLP_EN);
-    //dwt_entersleep();
 
     printf("Power on Baby!\n");
 
     xTimerStart( xTimers[2], 0 );
 
-    //NOTE+TODO
     m_lbs.is_ranging_notification_enabled = true;
     if(m_lbs.measurement_update_handler != NULL)
         m_lbs.measurement_update_handler(&m_lbs, START_RANGING);
 
     for (;;)
     {
-        if(gpio_get_level(DW1000_IRQ) == 1 && !dwt_isr_in_progress)
-        {
-        	//printf("CSOKIKAKE!\n");
-            dwt_isr_in_progress = true;
-//			nrf_gpio_pin_set(LED_1);
-            dwt_isr();
+		//if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
+			if(gpio_get_level(DW1000_IRQ) == 1 && !dwt_isr_in_progress)
+			{
+				dwt_isr_in_progress = true;
+	//			nrf_gpio_pin_set(LED_1);
+				dwt_isr();
 
-            while(deca_twr_poll_msg()){}
+				while(deca_twr_poll_msg()){}
 
-//			nrf_gpio_pin_clear(LED_1);
-            dwt_isr_in_progress = false;
-        }
-        while(ulTaskNotifyTake(pdTRUE, portMAX_DELAY) != 1) {};	//TODO + NOTE
-        //printf("SZIA BEJBE!");
+	//			nrf_gpio_pin_clear(LED_1);
+				dwt_isr_in_progress = false;
+			}
+			//xSemaphoreGive(xSemaphore);
+			//}
+		while(ulTaskNotifyTake(pdTRUE, portMAX_DELAY) != 1) {};
     }
 }
 #endif
@@ -285,17 +289,20 @@ static void start_anchor()
 
     for (;;)
     {
-        if(gpio_get_level(DW1000_IRQ) == 1 && !dwt_isr_in_progress)
-        {
-            dwt_isr_in_progress = true;
-//			nrf_gpio_pin_set(LED_1);
-            dwt_isr();
+    	//if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
+			if(gpio_get_level(DW1000_IRQ) == 1 && !dwt_isr_in_progress)
+			{
+				dwt_isr_in_progress = true;
+	//			nrf_gpio_pin_set(LED_1);
+				dwt_isr();
 
-            while(deca_twr_poll_msg()){}
+				while(deca_twr_poll_msg()){}
 
-//			nrf_gpio_pin_clear(LED_1);
-            dwt_isr_in_progress = false;
-        }
+	//			nrf_gpio_pin_clear(LED_1);
+				dwt_isr_in_progress = false;
+			}
+			//xSemaphoreGive(xSemaphore);
+			//}
         while(ulTaskNotifyTake(pdTRUE, portMAX_DELAY) != 1) {};
     }
 }
@@ -304,7 +311,8 @@ static void start_anchor()
 void app_main()
 {
 	printf("START IT!\n");
-	vTaskDelay(10000 / portTICK_PERIOD_MS);
+	vTaskDelay(7000 / portTICK_PERIOD_MS);
+	initShield();
 #ifdef TAG_MODE
 	connection_init();
     start_tag();

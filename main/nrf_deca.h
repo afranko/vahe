@@ -52,6 +52,9 @@ int deca_twr_initiator(response_receive_handler_t handler, rtls_beacon_receive_h
 void deca_twr_responder_send_rtls_beacon();
 int deca_twr_responder(void);
 
+/* Semafor City */
+void initShield(void);
+
 #endif /* DW1000_H_ */
 
 

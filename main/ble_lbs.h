@@ -12,7 +12,7 @@
 
 #define MAX_LBS_NAME				32
 
-#define MAX_ANCHORS		10
+#define MAX_ANCHORS		5	//TODO + NOTE
 
 // Forward declaration of the ble_lbs_t type. 
 typedef struct ble_lbs_s ble_lbs_t;

@@ -2,6 +2,7 @@
 #include "platform.h"
 #include <math.h>
 #include <inttypes.h>
+#include <string.h>
 
 static inline uint16_t min(uint16_t a, uint16_t b)
 {
@@ -28,6 +29,9 @@ static inline uint16_t max(uint16_t a, uint16_t b)
 #define UUS_TO_DWT_TIME					65536ll
 
 static uint16_t     _user_addr;
+
+uint8_t last_subtype = 0;	//TODO + NOTE
+rtls_struct_t last_saved;	//TODO + NOTE
 
 //static unsigned long bigFukinBuffer[4] = {0, 0, 0, 0};		//TODO+NOTE
 
@@ -231,6 +235,8 @@ rtls_res_t rtls_compose_poll_msg(uint16_t addr, rtls_struct_t *rtls)
     rtls->tx_ts_32 = poll_tx_ts_32;
     rtls->out_length = sizeof(rtls_poll_msg_t);
 
+    last_subtype = MAC_FRAME_ST_POLL; //TODO + NOTE
+
     return RTLS_OK;
 }
 
@@ -263,6 +269,11 @@ rtls_res_t rtls_handle_message(rtls_struct_t* rtls)
     	//ets_printf("ST_DIST: %lu\n", bigFukinBuffer[3]++);
         return handle_dist_msg(rtls);
     }
+
+    if(subtype == MAC_FRAME_ST_RESP)	//TODO + NOTE
+    	last_subtype = MAC_FRAME_ST_FINAL;
+
+    memcpy(&last_saved, rtls, sizeof(rtls_struct_t));	//TODO + NOTE
 
     return RTLS_UNKNOW_SUBTYPE;
 }

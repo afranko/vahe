@@ -120,7 +120,10 @@ bool socket_init()
 	struct sockaddr_in tcpServerAddr;
 
 	bzero(&tcpServerAddr, sizeof tcpServerAddr);
-	tcpServerAddr.sin_addr.s_addr = htonl((((((10 << 8) | 0) << 8) | 0) << 8) | 92);//inet_addr(TCPServerIP);
+
+	//Todo IP ADDRESS - 192 -> highest byte, 168 -> etc. etc.
+
+	tcpServerAddr.sin_addr.s_addr = htonl((((((192 << 8) | 168) << 8) | 1) << 8) | 200);//inet_addr(TCPServerIP);
 	tcpServerAddr.sin_family = AF_INET;
 	tcpServerAddr.sin_port = htons(PORT);
 

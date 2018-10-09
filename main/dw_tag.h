@@ -1,6 +1,10 @@
 #ifndef DW_TAG_H_
 #define DW_TAG_H_
 
+#include "commons.h"
+
+#ifdef TAG_MODE
+
 #include <stdbool.h>
 #include <stdint.h>
 #include "freertos/FreeRTOS.h"
@@ -28,5 +32,7 @@ void mpu_send_measurements();
 
 void ts_timeout_handler(); //NOTE+TODO
 void send_debug_message(char message[]);
+
+#endif
 
 #endif /* DW_TAG_H_ */

@@ -24,9 +24,9 @@
 #include "lwip/dns.h"
 #include "lwip/ip4_addr.h"
 
-#define SSID "AITIA_EMELET"
+#define SSID "AITIA_IPS"
 #define PASSPHARSE "sssgggaaa"
-#define TCPServerIP "10.0.0.92" //nincs hasznalva
+#define TCPServerIP "192.168.1.200" //nincs hasznalva
 #define PORT 6767
 
 int tcpSocket;

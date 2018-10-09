@@ -1,4 +1,7 @@
 #include "send_tag_uwb.h"
+
+#ifdef TAG_MODE
+
 #include "anchor/comm_mac.h"
 #include "nrf_deca.h"
 #include "freertos/FreeRTOS.h"
@@ -82,7 +85,7 @@ void pts_ranging_uwb(rangingMessage *msg, uint64_t tStamp, uint8_t serializedMsg
 		return;
 	}
 	else{
-		printf("SEND OK\n");
+		ets_printf("SEND OK\n");
 	}
 
 	if( write(tcpSocket, serializedMsg, 16U + (msg->length * 5U)) < (16U + (msg->length * 5U)))
@@ -99,7 +102,7 @@ void pts_ranging_uwb(rangingMessage *msg, uint64_t tStamp, uint8_t serializedMsg
 		return;
 	}
 	else
-		printf("SEND OK\n");
+		ets_printf("SEND OK\n");
 
 	msg->length = 0;
 }
@@ -197,3 +200,4 @@ uint16_t nearestAnchor(rangingMessage *msg)
 
 	return anchor;
 }
+#endif

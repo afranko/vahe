@@ -1,5 +1,9 @@
+
 #ifndef SEND_TAG_UWB_H_
 #define SEND_TAG_UWB_H_
+#include "commons.h"
+
+#ifdef TAG_MODE
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -64,5 +68,5 @@ void serialize_ranging(rangingMessage *msg, uint8_t serializedMsg[]);
 void serialize_mpu(mpuMessage *msg, uint8_t serializedMsg[]);
 void set_ranging_pt(rangingMessage *msg, int32_t press, int32_t temp);
 uint16_t nearestAnchor(rangingMessage *msg);
-
+#endif
 #endif	/* SEND_TAG_UWB_H_ */

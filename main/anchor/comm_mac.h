@@ -77,6 +77,8 @@ void                    mac_set_next_hop_info(nwk_next_hop_t data);
 
 uint8_t                 mac_send_results(uint8_t *data, uint8_t dLength, uint16_t dstntn);
 
+void tfra_func(uint16_t addr);	//TODO + NOTE
+
 static inline uint8_t mac_next_seq_id()
 {
     return _mac_seq_id++;

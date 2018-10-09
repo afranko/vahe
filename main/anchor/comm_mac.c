@@ -12,6 +12,8 @@ static nwk_next_hop_t       nwk_next_hop_data;
 extern uint64_t dwm1000_get_system_time_u64(void);
 extern uint64_t dwm1000_get_rx_timestamp_u64(void);
 
+extern rtls_struct_t last_saved;
+
 // NOTICE: size must be 32-bit aligned!
 BUFFER_POOL_CREATE(mac_memory_pool,COMM_MAC_BUFFER_LENGTH,COMM_MAC_BUFFER_ELEMENT_SIZE+
     sizeof(mac_packet_info_t)+128);
@@ -118,12 +120,15 @@ static rx_result_t handle_rx_packet(mac_packet_info_t *mac_pkg)
     if(type == MAC_FRAME_TYPE_BEACON)
         return RX_RES_OK_RXE;
 
-    if(dst_addr != _mac_addr)
+    if(dst_addr != _mac_addr) {
+    	//ets_printf("MALACOK AZ URBEN! LAKCIM NELKUL! ADDR: %x\n", dst_addr);
         return RX_RES_THROW;
+    }
 
     // shortcuts for ranging
     if(type == MAC_FRAME_TYPE_RANGING)
     {
+
         rtls_struct_t rtls;
         rtls.rx_ts = dwm1000_get_rx_timestamp_u64();
         rtls.msg = mac_pkg->packet;
@@ -176,7 +181,7 @@ static int mac_send_ranging_message(rtls_struct_t* rtls)
             int r = dwt_starttx(DWT_START_TX_DELAYED);
             if(r != DWT_SUCCESS)
             {
-                printf("RTLS message TX failed: %d (%02X)", r, rtls->out[0]);
+                printf("RTLS message TX failed: %d (%02X)\n", r, rtls->out[0]);
                 return -1;
             }
         }
@@ -254,6 +259,12 @@ void mac_start_ranging(uint16_t addr)
     dwt_forcetrxoff();
     if(mac_send_ranging_message(&rtls) != 0)
         dwt_rxenable(0);
+}
+
+void tfra_func(uint16_t addr)
+{
+	if(mac_send_ranging_message(&last_saved) != 0)
+		dwt_rxenable(0);
 }
 
 

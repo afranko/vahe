@@ -23,28 +23,6 @@ typedef uint64_t uint64;
 extern uint8_t err_cnter;	//TODO + NOTE
 #endif
 
-
-
-/* SEMAFOR CITY */
-
-SemaphoreHandle_t xSemaphore = NULL;	//MUTEX
-
-
-
-void initShield(void) {
-	xSemaphore = xSemaphoreCreateMutex();
-	if(xSemaphore == NULL) {
-		ets_printf("Szemafor malac!\n");
-	}
-}
-
-/* END SEMAFORCITY */
-
-/* DEBUGCITY*/
-
-static uint64_t fakeMutexForWrite = 0;
-static uint64_t fakeMutexForRead = 0;
-
 /* Default communication configuration. We use here EVK1000's mode 4. See NOTE 1 below. */
 dwt_config_t config = {
 		4,               /* Channel number. */
@@ -197,11 +175,6 @@ int writetospi(uint16 headerLength, const uint8 *headerBuffer, uint32 bodylength
 {
 	//uint8_t irqs = decamutexon();
 
-	if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
-
-	if(fakeMutexForWrite++ > 0)			//TODO+NOTE
-		ets_printf("HOPPA %" PRIu64 "GECI WRITE CIGANY!\n", fakeMutexForWrite);
-
 	//portDISABLE_INTERRUPTS();
 	gpio_set_level(DW1000_SS_PIN, 0);
 
@@ -220,14 +193,12 @@ int writetospi(uint16 headerLength, const uint8 *headerBuffer, uint32 bodylength
 	esp_err_t error_c = spi_device_queue_trans(spi, &trans[0], portMAX_DELAY);
 	if(error_c != ESP_OK) {
 		ets_printf("SPIW PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
 		return -1;
 	}
 
 	error_c = spi_device_get_trans_result(spi, &ret_trans, portMAX_DELAY);
 	if(error_c != ESP_OK) {
 		ets_printf("SPIW PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
 		return -1;
 	}
 
@@ -236,7 +207,6 @@ int writetospi(uint16 headerLength, const uint8 *headerBuffer, uint32 bodylength
 	error_c = spi_device_queue_trans(spi, &trans[1], portMAX_DELAY);
 	if(error_c != ESP_OK) {
 		ets_printf("SPIW PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
 		return -1;
 	}
 
@@ -245,7 +215,6 @@ int writetospi(uint16 headerLength, const uint8 *headerBuffer, uint32 bodylength
 
 	if(error_c != ESP_OK) {
 		ets_printf("SPIW PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
 		return -1;
 	}
 
@@ -260,11 +229,6 @@ int writetospi(uint16 headerLength, const uint8 *headerBuffer, uint32 bodylength
 
 	//portENTER_CRITICAL(&mux);
 
-	--fakeMutexForWrite;
-
-	xSemaphoreGive(xSemaphore);
-	}
-
 	return 0;
 }
 
@@ -272,11 +236,6 @@ int readfromspi(uint16 headerLength, const uint8 *headerBuffer, uint32 readlengt
 {
 	//portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;
 	//portENTER_CRITICAL(&mux);
-
-	if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
-
-	if(fakeMutexForRead++ > 0)
-		ets_printf("HOOP %" PRIu64 "CIGANYREADREAD\n", fakeMutexForRead);
 
 	gpio_set_level(DW1000_SS_PIN, 0);
 	//uint8_t irqs = decamutexon();
@@ -296,14 +255,12 @@ int readfromspi(uint16 headerLength, const uint8 *headerBuffer, uint32 readlengt
 	esp_err_t error_c = spi_device_queue_trans(spi, &trans[0], portMAX_DELAY);
 	if(error_c != ESP_OK) {
 		ets_printf("SPIR PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
 		return -1;
 	}
 
 	error_c = spi_device_get_trans_result(spi, &ret_trans, portMAX_DELAY);
 	if(error_c != ESP_OK) {
 		ets_printf("SPIR PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
 		return -1;
 	}
 
@@ -312,7 +269,6 @@ int readfromspi(uint16 headerLength, const uint8 *headerBuffer, uint32 readlengt
 	error_c = spi_device_queue_trans(spi, &trans[1], portMAX_DELAY);
 	if(error_c != ESP_OK) {
 		ets_printf("SPIR PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
 		return -1;
 	}
 
@@ -320,7 +276,6 @@ int readfromspi(uint16 headerLength, const uint8 *headerBuffer, uint32 readlengt
 
 	if(error_c != ESP_OK) {
 		ets_printf("SPIR PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
 		return -1;
 	}
 
@@ -329,11 +284,7 @@ int readfromspi(uint16 headerLength, const uint8 *headerBuffer, uint32 readlengt
 	//decamutexoff(irqs);
 	gpio_set_level(DW1000_SS_PIN, 1);
 
-	--fakeMutexForRead;
-
 	//portEXIT_CRITICAL(&mux);
-	xSemaphoreGive(xSemaphore);
-	}
 
 	return 0;
 }
@@ -459,8 +410,8 @@ void deca_twr_responder_send_rtls_beacon()
 
 int deca_twr_responder(void)
 {
-	//address = address & 0x00FF;
-	//address = address | 0xFE00;
+	address = address & 0x00FF;
+	address = address | 0xFE00;
 
 	initDW1000();
 	reset_DW1000();

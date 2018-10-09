@@ -1,6 +1,17 @@
 #ifndef COMMONS_H_
 #define COMMONS_H_
 
+#define TAG_MODE
+//#define ANCHOR_MODE
+
+#if (!defined TAG_MODE) && (!defined ANCHOR_MODE)
+	#error "MODE is undefined! Define TAG or ANCHOR MODE!"
+#endif
+
+#if (defined TAG_MODE) && (defined ANCHOR_MODE)
+	#error "Both MODE TAG and MODE ANCHOR is defined!"
+#endif
+
 //#define CALIB
 #define CALIB_ANCHOR_ADDRESS		    0x8003
 
@@ -66,11 +77,10 @@
 
 /* NEWS */
 
-#define MEASURE_TICKNUM			1000
+#define MEASURE_TICKNUM			2000
 #define BEACON_TICKNUM			100
 #define TS_TICKNUM				10
-#define RANGING_RX_TICKNUM		100
-#define BEACON_RX_TICKNUM		110
+#define RANGING_RX_TICKNUM		80
+#define BEACON_RX_TICKNUM		80
 
 #endif /* COMMONS_H_ */
-

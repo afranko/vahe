@@ -17,6 +17,8 @@
 #include "dw_tag.h"
 #include "dw_anchor.h"
 
+#include "rfid.h"
+
 #ifdef TAG_MODE
 #include "wifi_con.h"
 #endif
@@ -314,6 +316,7 @@ void app_main()
 	vTaskDelay(7000 / portTICK_PERIOD_MS);
 	initShield();
 #ifdef TAG_MODE
+	setUpNanoAndConnections();
 	connection_init();
     start_tag();
 #endif

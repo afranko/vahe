@@ -116,7 +116,7 @@ void rxtimeout_timeout_handler(void)
 			}
 			else {
 				err_cnter = 0;
-				ets_printf("ANYAD KURVA HETSZENTSEGE! ANCHOR: %x\n", m_lbs.anchorlist[act_anchor]);	//Dirty words if it failed...
+				ets_printf("RANGING FAILED! ANCHOR: %x\n", m_lbs.anchorlist[act_anchor]);	//Dirty words if it failed...
 				response_receive_handler(false, m_lbs.anchorlist[act_anchor], 0, 0);
 			}
 		}
@@ -144,6 +144,7 @@ void response_receive_handler(bool success, uint16_t src_address, uint16_t dista
     if(!isMsgRangingInit)
     {
         init_ranging_msg(&rMessage, getTagAddress());
+		init_http_send();
         isMsgRangingInit = true;
     }
 

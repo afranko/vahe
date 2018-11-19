@@ -193,14 +193,14 @@ void decamutexoff(decaIrqStatus_t s)
 	//portEXIT_CRITICAL(&mux);
 }
 
-int writetospi(uint16 headerLength, const uint8 *headerBuffer, uint32 bodylength, const uint8 *bodyBuffer)	//TODO még mindig magic MUX, printf???
+int writetospi(uint16 headerLength, const uint8 *headerBuffer, uint32 bodylength, const uint8 *bodyBuffer)	//TODO mï¿½g mindig magic MUX, printf???
 {
 	//uint8_t irqs = decamutexon();
 
 	if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
 
 	if(fakeMutexForWrite++ > 0)			//TODO+NOTE
-		ets_printf("HOPPA %" PRIu64 "GECI WRITE CIGANY!\n", fakeMutexForWrite);
+		ets_printf("NOTIF: %" PRIu64 "WRITE!\n", fakeMutexForWrite);
 
 	//portDISABLE_INTERRUPTS();
 	gpio_set_level(DW1000_SS_PIN, 0);
@@ -276,7 +276,7 @@ int readfromspi(uint16 headerLength, const uint8 *headerBuffer, uint32 readlengt
 	if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
 
 	if(fakeMutexForRead++ > 0)
-		ets_printf("HOOP %" PRIu64 "CIGANYREADREAD\n", fakeMutexForRead);
+		ets_printf("NOTIF: %" PRIu64 "SPIREAD\n", fakeMutexForRead);
 
 	gpio_set_level(DW1000_SS_PIN, 0);
 	//uint8_t irqs = decamutexon();
@@ -383,9 +383,9 @@ bool deca_twr_poll_msg()
 			if(initiator_rtls_beacon_receive_handler != NULL)
                 initiator_rtls_beacon_receive_handler(packet_info->src_addr, beacon_msg->hop_addr, beacon_msg->hop_count);
 		}
-		
+
 		mac_free_buffer(packet_info);
-		
+
 		return true;
 	}
 	else
@@ -418,7 +418,7 @@ int deca_twr_initiator(response_receive_handler_t handler, rtls_beacon_receive_h
 	int init_result = dwt_initialise(DWT_LOADUCODE);
 	spi_set_rate_high();
 	dwt_configure(&config);
-	
+
 	dwt_setrxmode(DWT_RX_SNIFF, 2, 24);
 
 	if(init_result == DWT_ERROR)
@@ -494,7 +494,7 @@ int deca_twr_responder(void)
 
 //	uint8_t t = 0x95;
 //	dwt_writetodevice(TX_CAL_ID, TC_PGDELAY_OFFSET, 1, &t);
-	
+
 	dwt_txconfig_t configTx;
 	configTx.PGdly = 0x95;
 	configTx.power = 0x1A140E2E;
@@ -502,7 +502,7 @@ int deca_twr_responder(void)
 
 /*
 	dwt_configcontinuousframemode(21300);
-	
+
 	dwt_write32bitreg(SYS_STATUS_ID, SYS_STATUS_TXFRS);
 	dwt_writetxdata(sizeof(rtls_beacon_msg), rtls_beacon_msg, 0);
 	dwt_writetxfctrl(sizeof(rtls_beacon_msg), 0);
@@ -512,7 +512,3 @@ int deca_twr_responder(void)
 
 	return 0;
 }
-
-
-
-

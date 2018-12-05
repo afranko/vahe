@@ -86,9 +86,14 @@ sleep_modes.o: \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/sens_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_access.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/rtc_wdt.h \
  C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/rtc_io.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc_gpio_channel.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/rtc_periph.h \
+ C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/uart.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_struct.h \
+ C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h \
@@ -104,9 +109,14 @@ sleep_modes.o: \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/portbenchmark.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/mpu_wrappers.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_system.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp_ringbuf/include/freertos/ringbuf.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_channel.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/lock.h:
 
@@ -280,11 +290,21 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_reg.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_access.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/rtc_wdt.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/rtc_io.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc_gpio_channel.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/rtc_periph.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/uart.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_struct.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
 
@@ -316,9 +336,19 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/mpu_wrappe
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_system.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp_ringbuf/include/freertos/ringbuf.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_channel.h:
 /home/heged/esp/esp-idf/components/esp32/./sleep_modes.c:

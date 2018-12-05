@@ -65,11 +65,12 @@ esp_http_client.o: \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/http_header.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/queue.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/transport.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/transport_tcp.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/transport.h \
+ C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport.h \
+ C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport_tcp.h \
+ C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/http_utils.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h \
+ C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport_utils.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/http_auth.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/include/esp_http_client.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
@@ -90,7 +91,10 @@ esp_http_client.o: \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/portbenchmark.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/mpu_wrappers.h \
  C:/msys32/home/heged/esp/esp-idf/components/nghttp/port/include/http_parser.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/transport_ssl.h
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/errno.h \
+ C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport_ssl.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h:
 
@@ -222,15 +226,17 @@ C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/http_hea
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/queue.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/transport.h:
+C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/transport_tcp.h:
+C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport_tcp.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/transport.h:
+C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/http_utils.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport_utils.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/http_auth.h:
 
@@ -272,5 +278,11 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/mpu_wrappe
 
 C:/msys32/home/heged/esp/esp-idf/components/nghttp/port/include/http_parser.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/transport_ssl.h:
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/errno.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport_ssl.h:
 /home/heged/esp/esp-idf/components/esp_http_client/./esp_http_client.c:

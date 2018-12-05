@@ -32,9 +32,11 @@ port/mbedtls_debug.o: \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/platform.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/esp_config.h \
+ C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/esp_mem.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/platform_time.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdio.h \
@@ -122,11 +124,15 @@ C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/plat
 
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/esp_config.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/esp_mem.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/platform_time.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h:
 

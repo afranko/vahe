@@ -1,4 +1,5 @@
 time.o: C:/msys32/home/heged/esp/esp-idf/components/newlib/time.c \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/reent.h \
@@ -17,6 +18,7 @@ time.o: C:/msys32/home/heged/esp/esp-idf/components/newlib/time.c \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/cdefs.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/stdlib.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/types.h \
@@ -95,6 +97,8 @@ time.o: C:/msys32/home/heged/esp/esp-idf/components/newlib/time.c \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h
 
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/errno.h:
@@ -130,6 +134,8 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/cdefs.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/stdlib.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h:
 

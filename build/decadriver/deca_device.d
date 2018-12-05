@@ -30,6 +30,7 @@ deca_device.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/math.h \
+ c:\msys32\home\heged\esp\workspace\aflegacy_vahe\main\commons.h \
  c:\msys32\home\heged\esp\workspace\aflegacy_vahe\main\decadriver/deca_types.h \
  c:\msys32\home\heged\esp\workspace\aflegacy_vahe\main\decadriver/deca_device_api.h \
  c:\msys32\home\heged\esp\workspace\aflegacy_vahe\main\decadriver/deca_regs.h \
@@ -100,6 +101,8 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/math.h:
+
+c:\msys32\home\heged\esp\workspace\aflegacy_vahe\main\commons.h:
 
 c:\msys32\home\heged\esp\workspace\aflegacy_vahe\main\decadriver/deca_types.h:
 

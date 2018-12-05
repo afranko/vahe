@@ -5,10 +5,14 @@
 #include "anchor/comm_mac.h"
 #include "nrf_deca.h"
 #include "freertos/FreeRTOS.h"
-#include "rfid.h"
+
+//#ifdef RFID_MODE
+	#include "rfid.h"
+//#endif
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "nvs_flash.h"
 
@@ -23,23 +27,90 @@
 
 #include "cJSON.h"
 
-uint32_t globalArea = 0; //GLOBAL FSM ID
+//#ifdef RFID_MODE
+static int32_t globalArea = -1; //GLOBAL FSM ID
+static char rfidString[15 * 3 * 12 + 1] = "\0"; //Vissza lett véve 15-re
+
+static char* currentAreaName = NULL;
+static char* currentAreaExtra = NULL;
+//#endif
 
 static uint16_t destAnchor = 0x0000;
-
 extern int tcpSocket;
 
-esp_http_client_config_t ips_uwb_server_config;
+char anchor_strings[17];
 
+//const char* TAG = "SENTAG";
+
+static esp_http_client_config_t ips_uwb_server_config, ips_rfid_server_config;
+static esp_http_client_handle_t ips_uwb_server_handler, ips_rfid_server_handler;
+
+/*esp_err_t _http_event_handle(esp_http_client_event_t *evt)
+{
+    switch(evt->event_id) {
+        case HTTP_EVENT_ERROR:
+            ESP_LOGI(TAG, "HTTP_EVENT_ERROR");
+            break;
+        case HTTP_EVENT_ON_CONNECTED:
+            ESP_LOGI(TAG, "HTTP_EVENT_ON_CONNECTED");
+            break;
+        case HTTP_EVENT_HEADER_SENT:
+            ESP_LOGI(TAG, "HTTP_EVENT_HEADER_SENT");
+            break;
+        case HTTP_EVENT_ON_HEADER:
+            ESP_LOGI(TAG, "HTTP_EVENT_ON_HEADER");
+            ets_printf("%.*s", evt->data_len, (char*)evt->data);
+            break;
+        case HTTP_EVENT_ON_DATA:
+            ESP_LOGI(TAG, "HTTP_EVENT_ON_DATA, len=%d", evt->data_len);
+            if (!esp_http_client_is_chunked_response(evt->client)) {
+                ets_printf("%.*s", evt->data_len, (char*)evt->data);
+            }
+			else
+			{
+				ets_printf("CHUCNKOLT\n");
+				ets_printf("%.*s", evt->data_len, (char*)evt->data);
+			}
+
+            break;
+        case HTTP_EVENT_ON_FINISH:
+            ESP_LOGI(TAG, "HTTP_EVENT_ON_FINISH");
+            break;
+        case HTTP_EVENT_DISCONNECTED:
+            ESP_LOGI(TAG, "HTTP_EVENT_DISCONNECTED");
+            break;
+    }
+    return ESP_OK;
+}*/
 
 void init_http_send(void)
 {
-	ips_uwb_server_config.url = "http://10.0.0.111:8080/ips-core/device/tracking/report_anchor_detections";
+	//UWB
+	ips_uwb_server_config.url = "http://192.168.0.200:8080/ips-core/device/tracking/report_anchor_detections"; //RFID
+	//ips_uwb_server_config.url = "http://192.168.1.96:8080/ips-core/device/tracking/report_anchor_detections";	// FINN
 
 	ips_uwb_server_config.buffer_size = DEFAULT_HTTP_BUF_SIZE;
 	ips_uwb_server_config.transport_type = HTTP_TRANSPORT_OVER_TCP;
 	ips_uwb_server_config.method = HTTP_METHOD_POST;
 	ips_uwb_server_config.auth_type = HTTP_AUTH_TYPE_NONE;
+
+	ips_uwb_server_handler = esp_http_client_init(&ips_uwb_server_config);
+
+	//RFID
+	ips_rfid_server_config.url = "http://192.168.0.201:8454/eventhandler/publish";
+
+	ips_rfid_server_config.buffer_size = DEFAULT_HTTP_BUF_SIZE;
+	ips_rfid_server_config.transport_type = HTTP_TRANSPORT_OVER_TCP;
+	ips_rfid_server_config.method = HTTP_METHOD_POST;
+	ips_rfid_server_config.auth_type = HTTP_AUTH_TYPE_NONE;
+
+	ips_rfid_server_handler = esp_http_client_init(&ips_rfid_server_config);
+}
+
+void cleanup_http_send(void)
+{
+	esp_http_client_cleanup(ips_uwb_server_handler);
+	esp_http_client_cleanup(ips_rfid_server_handler);
 }
 
 void init_ranging_msg(rangingMessage *msg, uint16_t tag_id)
@@ -99,165 +170,288 @@ void pts_ranging_uwb(rangingMessage *msg, uint64_t tStamp, uint8_t serializedMsg
 	if(msg->length <= 10U)
 		mac_send_results(serializedMsg, 16U + msg->length * 5U, destAnchor);*/
 
-	uint8_t prefix[3] = {0xc5, 0xab, 0xa0};
+	//uint8_t prefix[3] = {0xc5, 0xab, 0xa0};
 
 	/* HTTP */
-	esp_http_client_handle_t ips_uwb_server_handler;
-	ips_uwb_server_handler = esp_http_client_init(&ips_uwb_server_config);
-	printf("struct hand\n");
+	cJSON *ips_uwb_server_allmsg, *det[10], *array; //max 10 ranging data
 
-	cJSON *root, *det[10], *array; //max 10 ranging data
+	/*EPCData oArray[ 15 ];
+	uint8_t tot = 0;
+	readEPCsForce(1000, &tot, oArray);
+	if(tot == 0)
+		ets_printf("\n\n\nNem volt RFID a kozelben vagy szar az olvasas \n\n\n\n");
+	else
+	{
+		for (int iu = 0; iu < tot; iu++)
+		{
+			ets_printf("\n\n\n\n\n%d : [ ");
+			for (int ju = 0; ju < EPC_LENGTH; ju++)
+			{
+				ets_printf("%u ", oArray[iu].bytes[ju]);
+				ets_printf("_");
+			}
+			ets_printf("] \n\n\n\n\n\n");
+		}
+	}
+	//ets_printf("_ \n");*/
 
-	root = cJSON_CreateObject();
-	cJSON_AddStringToObject(root,"tagId", msg->tagID);
-	cJSON_AddNumberToObject(root,"timestamp", msg->timeStamp);
-	cJSON_AddNumberToObject(root,"pressure", msg->pressure);
-	cJSON_AddNumberToObject(root,"temperature", msg->temperature);
-	array = cJSON_AddArrayToObject(root, "detections");
+	ips_uwb_server_allmsg = cJSON_CreateObject();
+	itoa(msg->tagID, anchor_strings, 16);
+	//cJSON_AddNumberToObject(ips_uwb_server_allmsg,"tagid", msg->tagID);
+
+	for(unsigned char iter = 0; iter < 17; ++iter)
+	{
+		if( anchor_strings[iter] >= 97 )
+		{
+			anchor_strings[iter] -= 32;
+		}
+	}
+
+	cJSON_AddStringToObject(ips_uwb_server_allmsg,"tagId", anchor_strings);
+	cJSON_AddNumberToObject(ips_uwb_server_allmsg,"timestamp", msg->timeStamp);
+	cJSON_AddNumberToObject(ips_uwb_server_allmsg,"pressure", msg->pressure);
+	cJSON_AddNumberToObject(ips_uwb_server_allmsg,"temperature", msg->temperature);
+	array = cJSON_AddArrayToObject(ips_uwb_server_allmsg, "detections");
 	for(int k = 0; k < msg->length; k++)
 	{
 		cJSON_AddItemToArray(array, det[k] =cJSON_CreateObject());
-		cJSON_AddStringToObject(det[k],"deviceId",msg->rpacks[k].anchorID);
+		itoa(msg->rpacks[k].anchorID, anchor_strings, 16);
+		for(unsigned char iter = 0; iter < 17; ++iter)
+		{
+			if( anchor_strings[iter] >= 97 )
+			{
+				anchor_strings[iter] -= 32;
+			}
+		}
+		cJSON_AddStringToObject(det[k],"deviceId", anchor_strings);
+		//cJSON_AddNumberToObject(det[k],"anchor", msg->rpacks[k].anchorID);
 		cJSON_AddNumberToObject(det[k],"distance", msg->rpacks[k].distance);
 	}
 
-	printf("JSON ready\n\n");
-	printf("%s\n\n", cJSON_Print(root));
+	ets_printf("JSON ready\n\n");
+	//ets_printf("%s\n\n", cJSON_Print(ips_uwb_server_allmsg));
 
-	const char* msg_http = cJSON_PrintUnformatted(root);
+	/*const*/ char* ips_uwb_server_msg = cJSON_PrintUnformatted(ips_uwb_server_allmsg);
+	//strcpy(ips_uwb_server_msg, "{}");
+
+	/*for(int i = 0; i < 10; i++)
+		cJSON_Delete(det[i]); //json felszab
+	cJSON_Delete(array); //json felszab*/
+	cJSON_Delete(ips_uwb_server_allmsg); //json felszab
+
 //	char resp[512];
 	esp_http_client_set_header(ips_uwb_server_handler, "Content-Type", "application/json");
+	esp_http_client_set_post_field(ips_uwb_server_handler, ips_uwb_server_msg, strlen(ips_uwb_server_msg));
 
 	char *buffer = malloc(DEFAULT_HTTP_BUF_SIZE + 1);
 	if (buffer == NULL) {
-		printf("Cannot malloc http receive buffer\n");
-		return;
+		ets_printf("Cannot malloc http receive buffer\n");
+		goto CLEAR_MESSAGE;
 	}
 
 	esp_err_t err;
-	if ((err = esp_http_client_open(ips_uwb_server_handler, strlen(msg_http))) != ESP_OK) {
-		printf("Failed to open HTTP connection: %s\n", esp_err_to_name(err));
+	if ((err = esp_http_client_open(ips_uwb_server_handler, strlen(ips_uwb_server_msg))) != ESP_OK) {
+		//ets_printf("Failed to open HTTP connection: %s\n", esp_err_to_name(err));
 		free(buffer);
-		return;
+		goto CLEAR_MESSAGE;
 	}
 
-	esp_http_client_write(ips_uwb_server_handler, msg_http, strlen(msg_http));
-	int content_length =  esp_http_client_fetch_headers(ips_uwb_server_handler);
-	int total_read_len = 0, read_len;
+	esp_http_client_write(ips_uwb_server_handler, (const char*)ips_uwb_server_msg, strlen(ips_uwb_server_msg));
+	//int content_length =  esp_http_client_fetch_headers(ips_uwb_server_handler);
+	//int total_read_len = 0, read_len;
+	esp_http_client_fetch_headers(ips_uwb_server_handler);
 
-	/*
-	 * forced read
-	 */
+	//read
 	esp_http_client_read(ips_uwb_server_handler, buffer, DEFAULT_HTTP_BUF_SIZE);
-	printf("HTTP Stream reader Status = %d, content_length = %d\n",
+	ets_printf("HTTP Stream reader Status = %d, content_length = %d\n",
 					esp_http_client_get_status_code(ips_uwb_server_handler),
 					esp_http_client_get_content_length(ips_uwb_server_handler));
-	printf("%s\n", buffer);
-
-
-	cJSON *uwb_server_json_response;
-	uwb_server_json_response = cJSON_Parse(buffer);
-	printf("uwb_server_json_response\n%s\n", cJSON_Print(uwb_server_json_response));
-	printf("uwb_server_json_response_status\n%s\n", cJSON_Print(cJSON_GetObjectItem(uwb_server_json_response, "statusCode")));
-
-	//TODO ezeket a pointereket úgy elhagyjuk mint a picsas
-
-	// TODO
-	char *areaNum = cJSON_Print(cJSON_GetObjectItem(uwb_server_json_response, "rfidSphereId"));
-	uint32_t currentArea = atoi(areaNum);
-	free(areaNum);
-
-	char *areaName = cJSON_Print(cJSON_GetObjectItem(uwb_server_json_response, "areaName")); //TODO
+	//printf("%s\n", buffer);
 
 	esp_http_client_close(ips_uwb_server_handler);
-	esp_http_client_cleanup(ips_uwb_server_handler);
+
+	free(ips_uwb_server_msg);
+
+#ifdef RFID_MODE
+	cJSON *ips_uwb_server_json_response = cJSON_Parse(buffer);
+	//printf("uwb_server_json_response\n%s\n", cJSON_Print(ips_uwb_server_json_response));
+	//printf("uwb_server_json_response_status\n%s\n", cJSON_Print(cJSON_GetObjectItem(ips_uwb_server_json_response, "statusCode")));
+
+	int32_t currentArea;
+
+
+	//Meg kell nézni, hogy null-t dob-e ha nincs benne
+	cJSON *areaNumObject = cJSON_GetObjectItem(ips_uwb_server_json_response, "rfidSphereId");
+	cJSON *areaNameObject;
+	cJSON *areaExtraObject;
+	if(areaNumObject == NULL)
+	{
+		ets_printf("Most vagyunk uresben\n");
+		currentArea = -1;
+	}
+	else
+	{
+		currentArea = areaNumObject->valueint;
+	}
+	//cJSON_Delete(ips_uwb_server_json_response);
+#endif
 	free(buffer);
 
-	/* RFID READ */
+	//RFID READ
+#ifdef RFID_MODE
 	if(globalArea != currentArea)
 	{
-		uint8_t tombMeret = 100;
-		char rfidString[100 * 3 + 1] = "\0";
+
+		areaNameObject = cJSON_GetObjectItem(ips_uwb_server_json_response, "name");
+		areaExtraObject = cJSON_GetObjectItem(ips_uwb_server_json_response, "extra");
+
+		//TODO ez most 100*12 byte, az jó nagy, ebből visszaveszek a biztonság kedvéért
+		uint8_t tombMeret = 15;
+		//rfidString[100 * 3 + 1] = "\0";
 		char rfidElement[4] = "\0";
 		EPCData orderedArray[ tombMeret  ];
+		/*for(size_t iterator = 0; iterator < 3; ++iterator)
+		{
+			for (unsigned int jter = 0; jter < EPC_LENGTH; jter++)
+			{
+				orderedArray[iterator].bytes[jter] = (uint8_t) iterator * jter;
+			}
+		}*/
+		//tombMeret = 3;	//TODO ez amúgy nem kell
 		readEPCsForce(1000, &tombMeret, orderedArray);
-		ets_printf("%u : tombmeret \n", tombMeret);
+		//ets_printf("%u : tombmeret \n", tombMeret);
 		for (int i = 0; i < tombMeret; i++)
 		{
-			ets_printf("%d : [ ");
+			//ets_printf("%d : [ ");
 			for (int j = 0; j < EPC_LENGTH; j++)
 			{
-				ets_printf("%u ", orderedArray[i].bytes[j]);
-				strcat(rfidString, itoa(orderedArray[i].bytes[j], rfidElement, 10));
+				//ets_printf("%u ", orderedArray[i].bytes[j]);
+				itoa(orderedArray[i].bytes[j], rfidElement, 10);
+				strcat(rfidString, rfidElement);
+				strcat(rfidString, "_");
 			}
-			ets_printf("] \n");
+			//ets_printf("] \n");
 		}
-		ets_printf("_ \n");
+		//ets_printf("_ \n");
 
-		/*
-		 * rfid
-		 */
-		esp_http_client_config_t ips_rfid_server_config;
-		ips_rfid_server_config.url = "http://152.66.246.237:8454/eventhandler/publish";
-		ips_rfid_server_config.buffer_size = DEFAULT_HTTP_BUF_SIZE;
-		ips_rfid_server_config.transport_type = HTTP_TRANSPORT_OVER_TCP;
-		ips_rfid_server_config.method = HTTP_METHOD_POST;
-		ips_rfid_server_config.auth_type = HTTP_AUTH_TYPE_NONE;
-		printf("ips_rfid_server_config kesz\n");
-
-		esp_http_client_handle_t ips_rfid_server_handler;
-		ips_rfid_server_handler = esp_http_client_init(&ips_rfid_server_config);
-		printf("struct hand\n");
-
-		cJSON *ips_rfid_server_allmsg, *event, *eventMetadata, *source; //max 10 ranging data
-
-		ips_rfid_server_allmsg = cJSON_CreateObject();
-
-		//ips_rfid_server_source
-		source= cJSON_CreateObject();
-		cJSON_AddStringToObject(source,"systemName","SmartProduct1");
-		cJSON_AddStringToObject(source,"address", "127.0.0.1");
-		cJSON_AddNumberToObject(source,"port", 8080);
-
-		//Todo
-		//if(enter or leave)
-
-		//ips_rfid_server_event
-		event = cJSON_CreateObject();
-		if(globalArea == 0)
+		//belépés előtt mindig leaveelnük egy areaból, de lehet, hogy most üres területen vagyunk
+		if((globalArea != -1))	//Nem üresből megyünk bárhova
 		{
-			cJSON_AddStringToObject(event,"type","area_entered"); //"area_left"
-			cJSON_AddStringToObject(event,"payload", areaName);
-		}
-		else
-		{
+
+			cJSON *ips_rfid_server_allmsg, *event, *eventMetadata, *source; //max 10 ranging data
+
+			ips_rfid_server_allmsg = cJSON_CreateObject();
+
+			//ips_rfid_server_source
+			source= cJSON_CreateObject();
+			cJSON_AddStringToObject(source,"systemName","SmartProduct1");
+			cJSON_AddStringToObject(source,"address", "127.0.0.1");
+			cJSON_AddNumberToObject(source,"port", 8080);
+
+			//ips_rfid_server_event
+			event = cJSON_CreateObject();
+
+			eventMetadata = cJSON_CreateObject();
+			cJSON_AddItemToObject(event, "eventMetadata", eventMetadata);
+			cJSON_AddStringToObject(eventMetadata,"rfid", rfidString);
+			cJSON_AddItemToObject(ips_rfid_server_allmsg, "source", source);
+
+
+
 			cJSON_AddStringToObject(event,"type","area_left"); //"area_left"
-			cJSON_AddStringToObject(event,"payload", areaName);
+			cJSON_AddStringToObject(event,"payload", currentAreaName);
+			cJSON_AddStringToObject(eventMetadata,"extra", currentAreaExtra);
+			cJSON_AddItemToObject(ips_rfid_server_allmsg, "event", event);
+
+			ets_printf("RFID JSON ready - lefter\n\n");
+
+			//ets_printf("\n\n%s\n\n", cJSON_Print(ips_rfid_server_allmsg));
+
+
+			char* ips_rfid_server_msg = cJSON_PrintUnformatted(ips_rfid_server_allmsg);
+
+			//ets_printf("\n\n%s\n\n", ips_rfid_server_msg);
+
+			esp_http_client_set_header(ips_rfid_server_handler, "Content-Type", "application/json");
+			esp_http_client_set_post_field(ips_rfid_server_handler, ips_rfid_server_msg, strlen(ips_rfid_server_msg));
+			esp_http_client_perform(ips_rfid_server_handler);
+			ets_printf("code %d\n", esp_http_client_get_status_code(ips_rfid_server_handler));
+			free(ips_rfid_server_msg);
+
+			//cJSON_DeleteItemFromObject(event, "type");
+			//cJSON_DeleteItemFromObject(event, "payload");
+			//cJSON_DeleteItemFromObject(eventMetadata, "extra");
+			cJSON_Delete(ips_rfid_server_allmsg);
 		}
-		eventMetadata = cJSON_CreateObject();
-		cJSON_AddItemToObject(event, "eventMetadata", eventMetadata);
-		cJSON_AddStringToObject(eventMetadata,"extra","some extra string value");
 
-		cJSON_AddStringToObject(eventMetadata,"rfid", rfidString);
+		//bárhonnan megyünk nem üresbe
+		if(currentArea != -1)
+		{
+			cJSON *ips_rfid_server_allmsg, *event, *eventMetadata, *source; //max 10 ranging data
 
-		cJSON_AddItemToObject(ips_rfid_server_allmsg, "source", source);
-		cJSON_AddItemToObject(ips_rfid_server_allmsg, "event", event);
+			ips_rfid_server_allmsg = cJSON_CreateObject();
 
-		//TODO FREEEEEEE
+			//ips_rfid_server_source
+			source= cJSON_CreateObject();
+			cJSON_AddStringToObject(source,"systemName","SmartProduct1");
+			cJSON_AddStringToObject(source,"address", "127.0.0.1");
+			cJSON_AddNumberToObject(source,"port", 8080);
 
-		printf("JSON ready\n\n");
+			//ips_rfid_server_event
+			event = cJSON_CreateObject();
 
-		char* ips_rfid_server_msg = cJSON_PrintUnformatted(ips_rfid_server_allmsg);
-		printf("ips_rfid_server_msg\n");
+			eventMetadata = cJSON_CreateObject();
+			cJSON_AddItemToObject(event, "eventMetadata", eventMetadata);
+			cJSON_AddStringToObject(eventMetadata,"rfid", rfidString);
+			cJSON_AddItemToObject(ips_rfid_server_allmsg, "source", source);
 
-		esp_http_client_set_post_field(ips_rfid_server_handler, ips_rfid_server_msg, strlen(ips_rfid_server_msg));
-		esp_http_client_set_header(ips_rfid_server_handler, "Content-Type", "application/json");
-		esp_http_client_perform(ips_rfid_server_handler);
-		printf("code %d\n", esp_http_client_get_status_code(ips_rfid_server_handler));
 
-		free(areaName);
-		free(ips_rfid_server_msg); //TODO ez a free ami elvileg kell
+			cJSON_AddStringToObject(event,"type","area_entered");
+			cJSON_AddStringToObject(event,"payload", areaNameObject->valuestring);
+			cJSON_AddStringToObject(eventMetadata,"extra", areaExtraObject->valuestring);
+			cJSON_AddItemToObject(ips_rfid_server_allmsg, "event", event);
+
+			ets_printf("RFID JSON ready -- enterr\n\n");
+
+			char* ips_rfid_server_msg = cJSON_PrintUnformatted(ips_rfid_server_allmsg);
+
+			//ets_printf("\n\n%s\n\n", ips_rfid_server_msg);
+
+
+			//ets_printf("\n\n%s\n\n", cJSON_Print(ips_rfid_server_allmsg));
+
+			esp_http_client_set_header(ips_rfid_server_handler, "Content-Type", "application/json");
+			esp_http_client_set_post_field(ips_rfid_server_handler, ips_rfid_server_msg, strlen(ips_rfid_server_msg));
+			esp_http_client_perform(ips_rfid_server_handler);
+			ets_printf("code %d\n", esp_http_client_get_status_code(ips_rfid_server_handler));
+
+			free(ips_rfid_server_msg);
+			cJSON_Delete(ips_rfid_server_allmsg);
+		}
+
+		globalArea = currentArea; //Meg kell jegyeznünk
+
+		//cJSON_Delete(source); //json felszab
+		//cJSON_Delete(event); //json felszab
+		//cJSON_Delete(eventMetadata); //json felszab
+		 //json felszab
+
+		// Megjegyezzük az aktuális leírókat
+		if(globalArea != -1)
+		{
+			free(currentAreaName);
+			free(currentAreaExtra);
+			currentAreaName = (char*) malloc(strlen(areaNameObject->valuestring) + 1);
+			currentAreaExtra = (char*) malloc(strlen(areaExtraObject->valuestring) + 1);
+			strcpy(currentAreaName, areaNameObject->valuestring);
+			strcpy(currentAreaExtra, areaExtraObject->valuestring);
+		}
+
+		rfidString[0] = '\0';	// kinullázuk az rfid stringet
 	}
+	cJSON_Delete(ips_uwb_server_json_response);
+#endif
+	CLEAR_MESSAGE:
 	msg->length = 0;
 }
 

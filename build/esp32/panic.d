@@ -91,13 +91,15 @@ panic.o: C:/msys32/home/heged/esp/esp-idf/components/esp32/panic.c \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/timer_group_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/cpu.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/rtc_wdt.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_gdbstub.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_panic.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_core_dump.h \
  C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_cache_err_int.h \
  C:/msys32/home/heged/esp/esp-idf/components/app_trace/include/esp_app_trace.h \
- C:/msys32/home/heged/esp/esp-idf/components/app_trace/include/esp_app_trace_util.h
+ C:/msys32/home/heged/esp/esp-idf/components/app_trace/include/esp_app_trace_util.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/esp_system_internal.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdlib.h:
 
@@ -283,6 +285,8 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/cpu.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/rtc_wdt.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_gdbstub.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_panic.h:
@@ -296,4 +300,6 @@ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_cache_err_int.h:
 C:/msys32/home/heged/esp/esp-idf/components/app_trace/include/esp_app_trace.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/app_trace/include/esp_app_trace_util.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/esp_system_internal.h:
 /home/heged/esp/esp-idf/components/esp32/./panic.c:

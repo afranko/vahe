@@ -36,6 +36,7 @@ port/os_xtensa.o: \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/endian.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h \
@@ -139,6 +140,8 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/endian.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h:
 

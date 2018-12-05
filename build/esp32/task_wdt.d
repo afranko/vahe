@@ -96,7 +96,8 @@ task_wdt.o: C:/msys32/home/heged/esp/esp-idf/components/esp32/task_wdt.c \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_dport_access.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_task_wdt.h
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_task_wdt.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/esp_system_internal.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h:
 
@@ -293,4 +294,6 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_reg.h:
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_task_wdt.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/esp_system_internal.h:
 /home/heged/esp/esp-idf/components/esp32/./task_wdt.c:

@@ -91,7 +91,9 @@ rtls.o: \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/timers.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/math.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/inttypes.h
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/inttypes.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/string.h
 
 C:/msys32/home/heged/esp/workspace/aflegacy_vahe/main/anchor/rtls.h:
 
@@ -276,4 +278,8 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/math.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/inttypes.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/string.h:
 /home/heged/esp/workspace/aflegacy_vahe/main/anchor/./rtls.c:

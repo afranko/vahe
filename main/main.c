@@ -11,19 +11,21 @@
 #include "driver/spi_master.h"
 
 #include "decadriver/deca_device_api.h"
+#include "send_tag_uwb.h"
 
 #include "ble_lbs.h"
 #include "nrf_deca.h"
 #include "dw_tag.h"
 #include "dw_anchor.h"
 
-#include "rfid.h"
+#include "commons.h"
 
 #ifdef TAG_MODE
 #include "wifi_con.h"
+#include "rfid.h"
 #endif
 
-#include "commons.h"
+
 
 #define CHG_DET	39
 #define CHG_LO	26
@@ -64,10 +66,13 @@ void vTimerCallback(TimerHandle_t pxTimer)
 		wifi_conn_cnt++;
 		break;
 #endif
+	#ifndef TAG_MODE
 	case 10:
 		gpio_set_level(GPIO_NUM_2, blinker);
+		ets_printf("BLINK!\n");
 		blinker = !blinker;
 		break;
+	#endif
 	case 1:
 		//if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
 			beacon_timeout_handler();
@@ -93,6 +98,7 @@ static void timers_init(void)
 
     xTimers[1] = xTimerCreate("beacon_timer", BEACON_TICKNUM/portTICK_PERIOD_MS, pdTRUE , (void*)1, vTimerCallback);
 
+#ifndef TAG_MODE
     gpio_config_t io_conf;
     io_conf.intr_type = GPIO_PIN_INTR_DISABLE;	//TODO+NOTE most akkor posedge negedge vagy high????
    	io_conf.mode = GPIO_MODE_OUTPUT;
@@ -103,6 +109,8 @@ static void timers_init(void)
 
    	gpio_set_level(GPIO_NUM_2, 0);
     blinkTimer = xTimerCreate("blink_timer", 500/portTICK_PERIOD_MS, pdTRUE, (void*)10, vTimerCallback);
+
+#endif
 }
 
 typedef struct
@@ -170,11 +178,11 @@ static void IRAM_ATTR gpiote_event_handler(void *arg)
     switch((uint32_t) arg)
     {
     case DW1000_IRQ:
-    	;
+    		;
     	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
     	vTaskNotifyGiveFromISR(xTaskToNotify, &xHigherPriorityTaskWoken);
     	break;
-    case CHG_DET:
+    /*case CHG_DET:
     		if(gpio_get_level(CHG_DET) == 1) {
     			gpio_set_level(CHG_LO, 0);
     			gpio_set_level(CHG_HI, 1);
@@ -189,7 +197,7 @@ static void IRAM_ATTR gpiote_event_handler(void *arg)
     			xTimerStart(blinkTimer, 0);
     			ets_printf("CHG SLOW");
     		}
-    	break;
+    	break;*/
     default:
     	break;
     }
@@ -208,7 +216,7 @@ static void gpiote_init(void)
 	ESP_ERROR_CHECK(gpio_isr_handler_add(DW1000_IRQ, gpiote_event_handler, (void*) DW1000_IRQ));
 
 	/* Faszt Charging */
-	io_conf.intr_type = GPIO_PIN_INTR_ANYEDGE;
+	/*io_conf.intr_type = GPIO_PIN_INTR_ANYEDGE;
 	io_conf.mode = GPIO_MODE_INPUT;
 	io_conf.pin_bit_mask = ( 1ULL << CHG_DET);
 	io_conf.pull_down_en = 0;
@@ -222,7 +230,7 @@ static void gpiote_init(void)
 	gpio_config(&io_conf);
 
 	io_conf.pin_bit_mask = ( 1ULL << CHG_HI);
-	gpio_config(&io_conf);
+	gpio_config(&io_conf);*/
 }
 
 /******************************************************************************************************************************************************/
@@ -236,7 +244,7 @@ static void start_tag()
     advertising_init();
     services_init();
 
-    xTimerStart(blinkTimer, 0);
+    //xTimerStart(blinkTimer, 0);
 
     printf("Start!\n");
 
@@ -245,11 +253,14 @@ static void start_tag()
 
     printf("Power on Baby!\n");
 
-    xTimerStart( xTimers[2], 0 );
+	connection_init();
+
+    xTimerStart( xTimers[2], 0 );	//TODO uwb nélkülinél kikell kapcsolni
 
     m_lbs.is_ranging_notification_enabled = true;
     if(m_lbs.measurement_update_handler != NULL)
         m_lbs.measurement_update_handler(&m_lbs, START_RANGING);
+
 
     for (;;)
     {
@@ -269,6 +280,56 @@ static void start_tag()
 			//}
 		while(ulTaskNotifyTake(pdTRUE, portMAX_DELAY) != 1) {};
     }
+
+	/*
+	vTaskDelay(10000 / portTICK_PERIOD_MS);
+
+	rangingMessage  rMessage;
+	uint16_t src_address[4] = {0xccc1, 0xccc2, 0xccc3, 0xccc4};
+	uint16_t distances[4] = {657, 50, 470, 470};
+	uint16_t distances_2[4] = {212, 212, 212, 212};
+	uint16_t distances_3[4] = {470, 470, 657, 50};
+
+	init_ranging_msg(&rMessage, getTagAddress());
+	init_http_send();
+	int32_t temperature = 0xABCDACDC;
+	uint32_t pressure = 0xACDCACDC;
+	uint8_t rSerializedMessage[200];
+
+	for(;;)
+	{
+		for(uint8_t ijk = 0; ijk < 4; ijk++)
+		{
+		    racking_ranging(&rMessage, src_address[ijk], distances[ijk], 0);
+		}
+
+		set_ranging_pt(&rMessage, (int32_t)pressure, temperature);
+
+	    pts_ranging_uwb(&rMessage, 10, rSerializedMessage);
+		vTaskDelay(2000 / portTICK_PERIOD_MS);
+
+		for(uint8_t ijk = 0; ijk < 4; ijk++)
+		{
+		    racking_ranging(&rMessage, src_address[ijk], distances_2[ijk], 0);
+		}
+
+		set_ranging_pt(&rMessage, (int32_t)pressure, temperature);
+
+	    pts_ranging_uwb(&rMessage, 10, rSerializedMessage);
+		vTaskDelay(2000 / portTICK_PERIOD_MS);
+
+		for(uint8_t ijk = 0; ijk < 4; ijk++)
+		{
+		    racking_ranging(&rMessage, src_address[ijk], distances_3[ijk], 0);
+		}
+
+		set_ranging_pt(&rMessage, (int32_t)pressure, temperature);
+
+	    pts_ranging_uwb(&rMessage, 10, rSerializedMessage);
+		vTaskDelay(2000 / portTICK_PERIOD_MS);
+	}
+	*/
+
 }
 #endif
 
@@ -305,7 +366,9 @@ static void start_anchor()
 			}
 			//xSemaphoreGive(xSemaphore);
 			//}
-        while(ulTaskNotifyTake(pdTRUE, portMAX_DELAY) != 1) {};
+        while(ulTaskNotifyTake(pdTRUE, portMAX_DELAY) != 1) {
+			ets_printf("ulTaskNotifyTake Expired!\n");
+		}
     }
 }
 #endif
@@ -313,11 +376,12 @@ static void start_anchor()
 void app_main()
 {
 	printf("START IT!\n");
-	vTaskDelay(7000 / portTICK_PERIOD_MS);
+	//vTaskDelay(2000 / portTICK_PERIOD_MS);
 	initShield();
 #ifdef TAG_MODE
-	setUpNanoAndConnections();
-	connection_init();
+	#ifdef RFID_MODE
+		setUpNanoAndConnections();
+	#endif
     start_tag();
 #endif
 #ifdef ANCHOR_MODE

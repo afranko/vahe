@@ -1,5 +1,6 @@
 sdmmc_cmd.o: \
  C:/msys32/home/heged/esp/esp-idf/components/sdmmc/sdmmc_cmd.c \
+ C:/msys32/home/heged/esp/esp-idf/components/sdmmc/sdmmc_common.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/_ansi.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/newlib.h \
@@ -90,6 +91,8 @@ sdmmc_cmd.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/syslimits.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/endian.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/param.h
+
+C:/msys32/home/heged/esp/esp-idf/components/sdmmc/sdmmc_common.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h:
 

@@ -18,6 +18,10 @@ hwcrypto/aes.o: \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/aes.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/esp_config.h \
  C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h \
+ C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/esp_mem.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdlib.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/stdlib.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h \
@@ -30,9 +34,6 @@ hwcrypto/aes.o: \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/assert.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdlib.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/stdlib.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_access.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_attr.h \
@@ -90,7 +91,9 @@ hwcrypto/aes.o: \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_api.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h \
- C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/cpu.h
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/cpu.h \
+ C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h:
 
@@ -128,6 +131,14 @@ C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/esp_con
 
 C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/esp_mem.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdlib.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/stdlib.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h:
@@ -151,12 +162,6 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/assert.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdlib.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/stdlib.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h:
 
@@ -273,4 +278,8 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_api
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/cpu.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h:
 /home/heged/esp/esp-idf/components/esp32/hwcrypto/aes.c:

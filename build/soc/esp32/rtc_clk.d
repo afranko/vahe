@@ -4,8 +4,6 @@ esp32/rtc_clk.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/_default_types.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/features.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/assert.h \
- C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdlib.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/ieeefp.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/_ansi.h \
@@ -20,10 +18,12 @@ esp32/rtc_clk.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/cdefs.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/stdlib.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/assert.h \
+ C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/rtc.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/uart.h \
@@ -60,7 +60,8 @@ esp32/rtc_clk.o: \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/soc_log.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/core-macros.h
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/core-macros.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/rtc_clk_common.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h:
 
@@ -69,10 +70,6 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/_default_type
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/features.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/assert.h:
-
-C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdlib.h:
 
@@ -102,13 +99,17 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/stdlib.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h:
-
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/assert.h:
+
+C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/rtc.h:
 
@@ -183,4 +184,6 @@ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/core-macros.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/rtc_clk_common.h:
 /home/heged/esp/esp-idf/components/soc/esp32/rtc_clk.c:

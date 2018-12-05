@@ -24,12 +24,14 @@ linenoise/linenoise.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdio.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stdio.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/string.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/ctype.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stat.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/fcntl.h \
@@ -84,6 +86,8 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdio.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stdio.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/errno.h:
@@ -95,6 +99,8 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/string.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/ctype.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stat.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h:
 

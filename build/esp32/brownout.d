@@ -29,9 +29,15 @@ brownout.o: C:/msys32/home/heged/esp/esp-idf/components/esp32/brownout.c \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/cpu.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/corebits.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/hal.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtensa-versions.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/tie.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc_cntl_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/esp_system_internal.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_system.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_sleep.h \
@@ -51,14 +57,9 @@ brownout.o: C:/msys32/home/heged/esp/esp-idf/components/esp32/brownout.c \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_intr.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_api.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/hal.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_context.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/tie.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/system.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime-frames.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtensa-versions.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h \
  C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/rtc_cntl.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
@@ -139,11 +140,23 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/cpu.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/corebits.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/hal.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtensa-versions.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/tie.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc_cntl_reg.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/esp_system_internal.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_system.h:
 
@@ -183,21 +196,11 @@ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_api.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/hal.h:
-
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_context.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/tie.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/system.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime-frames.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtensa-versions.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h:
 

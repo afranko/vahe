@@ -79,7 +79,7 @@ rmt.o: C:/msys32/home/heged/esp/esp-idf/components/driver/rmt.c \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/ringbuf.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp_ringbuf/include/freertos/ringbuf.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h \
@@ -253,7 +253,7 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/ringbuf.h:
+C:/msys32/home/heged/esp/esp-idf/components/esp_ringbuf/include/freertos/ringbuf.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
 

@@ -44,19 +44,20 @@ src/bootloader_init.o: \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc_cntl_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/timer_group_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/gpio_sig_map.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_image_format.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/rtc_wdt.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_image_format.h \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_flash_partitions.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_flash_data_types.h \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_secure_boot.h \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_flash_encrypt.h \
- C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_flash_partitions.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_flash.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_random.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_config.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_flash.h \
+ C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_random.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_config.h \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_clock.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/flash_qio_mode.h
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/flash_qio_mode.h
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_attr.h:
 
@@ -146,9 +147,11 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/timer_group_re
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/gpio_sig_map.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_image_format.h:
+C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/rtc_wdt.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_image_format.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_flash_partitions.h:
 
@@ -158,17 +161,17 @@ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_secur
 
 C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_flash_encrypt.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h:
-
 C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_flash_partitions.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_flash.h:
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_flash.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_random.h:
+C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_config.h:
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_random.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_config.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_clock.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/flash_qio_mode.h:
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/flash_qio_mode.h:
 /home/heged/esp/esp-idf/components/bootloader_support/src/bootloader_init.c:

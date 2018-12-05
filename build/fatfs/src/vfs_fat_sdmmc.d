@@ -35,6 +35,9 @@ src/vfs_fat_sdmmc.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/types.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/utime.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/utime.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h \
@@ -87,9 +90,10 @@ src/vfs_fat_sdmmc.o: \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stat.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/termios.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/dirent.h \
  C:/msys32/home/heged/esp/esp-idf/components/vfs/include/sys/dirent.h \
  C:/msys32/home/heged/esp/esp-idf/components/fatfs/src/esp_vfs_fat.h \
@@ -189,6 +193,12 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/types.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/utime.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/utime.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
 
@@ -294,11 +304,13 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stat.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h:
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/termios.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/dirent.h:
 

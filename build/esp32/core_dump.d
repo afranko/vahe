@@ -88,7 +88,10 @@ core_dump.o: \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_panic.h \
  C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_partition.h \
  C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_clk.h
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_clk.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_core_dump.h \
+ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
+ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h:
 
@@ -267,4 +270,10 @@ C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_partition.h:
 C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_clk.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_core_dump.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h:
 /home/heged/esp/esp-idf/components/esp32/./core_dump.c:

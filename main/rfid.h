@@ -76,12 +76,22 @@
 #define DEFAULT_UART_PORT 			UART_NUM_2
 #define DEFAULT_UART_PORT_DEBUG 	UART_NUM_0
 
+//TODO cserelve lett
+
+#define DEFAULT_UART_PORT_TXD	GPIO_NUM_13 //(UART_PIN_NO_CHANGE)
+#define DEFAULT_UART_PORT_RXD	GPIO_NUM_12 //(UART_PIN_NO_CHANGE)
+#define DEFAULT_UART_PORT_CTS	(UART_PIN_NO_CHANGE)//GPIO_NUM_25
+#define DEFAULT_UART_PORT_RTS	(UART_PIN_NO_CHANGE)//GPIO_NUM_26// ezeket lehet valtoztatni, nem lenyegesek
+#define RFID_EN_GPIO 			GPIO_NUM_14	// ra van most kotve az rfid engedelyezo laba
+
+/*
 #define DEFAULT_UART_PORT_TXD	GPIO_NUM_15 //(UART_PIN_NO_CHANGE)
 #define DEFAULT_UART_PORT_RXD	GPIO_NUM_2 //(UART_PIN_NO_CHANGE)
 #define DEFAULT_UART_PORT_CTS	(UART_PIN_NO_CHANGE)//GPIO_NUM_25
 #define DEFAULT_UART_PORT_RTS	(UART_PIN_NO_CHANGE)//GPIO_NUM_26// ezeket lehet valtoztatni, nem lenyegesek
 #define RFID_EN_GPIO 			GPIO_NUM_22	// ra van most kotve az rfid engedelyezo laba
 //UART PORT
+*/
 
 #define TAG_PROTOCOL 0x05
 

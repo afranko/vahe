@@ -158,7 +158,7 @@ void initDW1000(void)
 void reset_DW1000(void)
 {
 	gpio_set_level(DW1000_RST, 0);
-	vTaskDelay(20 / portTICK_PERIOD_MS);
+	vTaskDelay(200 / portTICK_PERIOD_MS);
 	gpio_set_direction(DW1000_RST, GPIO_MODE_INPUT);
 }
 
@@ -197,8 +197,12 @@ int writetospi(uint16 headerLength, const uint8 *headerBuffer, uint32 bodylength
 {
 	//uint8_t irqs = decamutexon();
 
-	if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
+	//printf("HBUFFER: %u, WBUFFER:%lu\n", headerLength, bodylength);
+	//ets_printf("SEMA: %u\n", uxSemaphoreGetCount(xSemaphore));
 
+	if(xSemaphoreTake(xSemaphore, ( TickType_t ) 1000) == pdTRUE) {
+
+	//ets_printf("SEMA FOGLALT: %u\n", uxSemaphoreGetCount(xSemaphore));
 	if(fakeMutexForWrite++ > 0)			//TODO+NOTE
 		ets_printf("NOTIF: %" PRIu64 "WRITE!\n", fakeMutexForWrite);
 
@@ -219,34 +223,30 @@ int writetospi(uint16 headerLength, const uint8 *headerBuffer, uint32 bodylength
 
 	esp_err_t error_c = spi_device_queue_trans(spi, &trans[0], portMAX_DELAY);
 	if(error_c != ESP_OK) {
-		ets_printf("SPIW PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
-		return -1;
+		ets_printf("SPIW PROBLEM");
+		goto END_R;
 	}
 
 	error_c = spi_device_get_trans_result(spi, &ret_trans, portMAX_DELAY);
 	if(error_c != ESP_OK) {
-		ets_printf("SPIW PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
-		return -1;
+		ets_printf("SPIW PROBLEM");
+		goto END_R;
 	}
 
 	//assert(ret_trans == &trans[0]);
 
 	error_c = spi_device_queue_trans(spi, &trans[1], portMAX_DELAY);
 	if(error_c != ESP_OK) {
-		ets_printf("SPIW PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
-		return -1;
+		ets_printf("SPIW PROBLEM");
+		goto END_R;
 	}
 
 
 	spi_device_get_trans_result(spi, &ret_trans, portMAX_DELAY);
 
 	if(error_c != ESP_OK) {
-		ets_printf("SPIW PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
-		return -1;
+		ets_printf("SPIW PROBLEM");
+		goto END_R;
 	}
 
 	//assert(ret_trans == &trans[1]);
@@ -254,7 +254,7 @@ int writetospi(uint16 headerLength, const uint8 *headerBuffer, uint32 bodylength
 	/*spi_device_transmit(spi, &trans[0]);
 	spi_device_transmit(spi, &trans[1]);*/
 
-
+	END_R:
 	//decamutexoff(irqs);
 	gpio_set_level(DW1000_SS_PIN, 1);
 
@@ -273,7 +273,10 @@ int readfromspi(uint16 headerLength, const uint8 *headerBuffer, uint32 readlengt
 	//portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;
 	//portENTER_CRITICAL(&mux);
 
-	if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
+	//printf("HBUFFER: %u, RBUFFER:%lu\n", headerLength, readlength);
+	//ets_printf("SEMA: %u\n", uxSemaphoreGetCount(xSemaphore));
+
+	if(xSemaphoreTake(xSemaphore, ( TickType_t ) 1000 ) == pdTRUE) {
 
 	if(fakeMutexForRead++ > 0)
 		ets_printf("NOTIF: %" PRIu64 "SPIREAD\n", fakeMutexForRead);
@@ -295,37 +298,33 @@ int readfromspi(uint16 headerLength, const uint8 *headerBuffer, uint32 readlengt
 	spi_transaction_t *ret_trans;
 	esp_err_t error_c = spi_device_queue_trans(spi, &trans[0], portMAX_DELAY);
 	if(error_c != ESP_OK) {
-		ets_printf("SPIR PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
-		return -1;
+		ets_printf("SPIR PROBLEM");
+		goto END_W;
 	}
 
 	error_c = spi_device_get_trans_result(spi, &ret_trans, portMAX_DELAY);
 	if(error_c != ESP_OK) {
-		ets_printf("SPIR PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
-		return -1;
+		ets_printf("SPIR PROBLEM");
+		goto END_W;
 	}
 
 	//assert(ret_trans == &trans[0]);
 
 	error_c = spi_device_queue_trans(spi, &trans[1], portMAX_DELAY);
 	if(error_c != ESP_OK) {
-		ets_printf("SPIR PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
-		return -1;
+		ets_printf("SPIR PROBLEM");
+		goto END_W;
 	}
 
 	spi_device_get_trans_result(spi, &ret_trans, portMAX_DELAY);
 
 	if(error_c != ESP_OK) {
-		ets_printf("SPIR PROBLEM: %s", esp_err_to_name(error_c));
-		--fakeMutexForRead;
-		return -1;
+		ets_printf("SPIR PROBLEM");
+		goto END_W;
 	}
 
 	//assert(ret_trans == &trans[1]);
-
+	END_W:
 	//decamutexoff(irqs);
 	gpio_set_level(DW1000_SS_PIN, 1);
 
@@ -414,7 +413,7 @@ int deca_twr_initiator(response_receive_handler_t handler, rtls_beacon_receive_h
 	initDW1000();
 	reset_DW1000();
 
-	spi_set_rate_low();
+	//spi_set_rate_low();
 	int init_result = dwt_initialise(DWT_LOADUCODE);
 	spi_set_rate_high();
 	dwt_configure(&config);

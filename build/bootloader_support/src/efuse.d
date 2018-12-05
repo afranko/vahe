@@ -25,10 +25,19 @@ src/efuse.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/stdlib.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdio.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/types.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stdio.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
- C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h
+ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/string.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_random.h
 
 C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_efuse.h:
 
@@ -80,6 +89,18 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdio.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/types.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stdio.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h:
@@ -87,4 +108,10 @@ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h:
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/string.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_random.h:
 /home/heged/esp/esp-idf/components/bootloader_support/src/efuse.c:

@@ -4,7 +4,7 @@ src/flash_qio_mode.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/_default_types.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/features.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/flash_qio_mode.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/flash_qio_mode.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
  C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
@@ -49,7 +49,7 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/features.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/flash_qio_mode.h:
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/flash_qio_mode.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
 

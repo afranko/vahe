@@ -1,5 +1,6 @@
 pthread_cond_var.o: \
  C:/msys32/home/heged/esp/esp-idf/components/pthread/pthread_cond_var.c \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/reent.h \
@@ -13,14 +14,17 @@ pthread_cond_var.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/_types.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/_default_types.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/lock.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/pthread.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/types.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/pthread.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/unistd.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/unistd.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/unistd.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/cdefs.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/types.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/_ansi.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h \
@@ -93,9 +97,10 @@ pthread_cond_var.o: \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/queue.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h:
 
@@ -123,6 +128,16 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/_default_type
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/lock.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/pthread.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/types.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/pthread.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/unistd.h:
@@ -133,11 +148,7 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/unistd.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/cdefs.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/types.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h:
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h:
 
@@ -282,8 +293,6 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/queue.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
 

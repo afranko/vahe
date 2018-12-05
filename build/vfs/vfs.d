@@ -27,6 +27,7 @@ vfs.o: C:/msys32/home/heged/esp/esp-idf/components/vfs/vfs.c \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stat.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/vfs/include/sys/ioctl.h \
@@ -96,7 +97,10 @@ vfs.o: C:/msys32/home/heged/esp/esp-idf/components/vfs/vfs.c \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
  C:/msys32/home/heged/esp/esp-idf/components/vfs/include/esp_vfs.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/unistd.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/utime.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/utime.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/termios.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h
 
@@ -155,6 +159,8 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stat.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h:
 
@@ -294,7 +300,13 @@ C:/msys32/home/heged/esp/esp-idf/components/vfs/include/esp_vfs.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/unistd.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/utime.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/utime.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/termios.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
 

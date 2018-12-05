@@ -43,12 +43,13 @@ clk.o: C:/msys32/home/heged/esp/esp-idf/components/esp32/clk.c \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/rtc.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/rtc_wdt.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc_cntl_reg.h \
- C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/i2s_reg.h \
- C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdio.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stdio.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/i2s_reg.h \
+ C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_access.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_dport_access.h \
@@ -65,7 +66,15 @@ clk.o: C:/msys32/home/heged/esp/esp-idf/components/esp32/clk.c \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime-frames.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/core-macros.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_clock.h
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_clock.h \
+ C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/spi_common.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/lldesc.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/queue.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/spi_periph.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_pins.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_reg.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_struct.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/gpio_sig_map.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h:
 
@@ -155,17 +164,19 @@ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/rtc.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/rtc_wdt.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc_cntl_reg.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/i2s_reg.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdio.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stdio.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/i2s_reg.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_reg.h:
 
@@ -200,4 +211,20 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h:
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/core-macros.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_clock.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/spi_common.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/lldesc.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/queue.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/spi_periph.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_pins.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_reg.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_struct.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/gpio_sig_map.h:
 /home/heged/esp/esp-idf/components/esp32/./clk.c:

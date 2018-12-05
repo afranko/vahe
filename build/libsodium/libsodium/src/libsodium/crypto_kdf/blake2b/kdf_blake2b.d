@@ -1,5 +1,6 @@
 libsodium/src/libsodium/crypto_kdf/blake2b/kdf_blake2b.o: \
  C:/msys32/home/heged/esp/esp-idf/components/libsodium/libsodium/src/libsodium/crypto_kdf/blake2b/kdf_blake2b.c \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/reent.h \
@@ -27,6 +28,8 @@ libsodium/src/libsodium/crypto_kdf/blake2b/kdf_blake2b.o: \
  C:/msys32/home/heged/esp/esp-idf/components/libsodium/libsodium/src/libsodium/include/sodium/private/common.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/string.h
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h:
 

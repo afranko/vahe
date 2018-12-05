@@ -21,6 +21,7 @@ vfs_uart.o: C:/msys32/home/heged/esp/esp-idf/components/vfs/vfs_uart.c \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stat.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/param.h \
@@ -33,6 +34,9 @@ vfs_uart.o: C:/msys32/home/heged/esp/esp-idf/components/vfs/vfs_uart.c \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/unistd.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/unistd.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/unistd.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/utime.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/utime.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
  C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h \
@@ -93,7 +97,7 @@ vfs_uart.o: C:/msys32/home/heged/esp/esp-idf/components/vfs/vfs_uart.c \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/termios.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/dirent.h \
  C:/msys32/home/heged/esp/esp-idf/components/vfs/include/sys/dirent.h \
  C:/msys32/home/heged/esp/esp-idf/components/vfs/include/esp_vfs_dev.h \
@@ -111,9 +115,11 @@ vfs_uart.o: C:/msys32/home/heged/esp/esp-idf/components/vfs/vfs_uart.c \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/ringbuf.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp_ringbuf/include/freertos/ringbuf.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_channel.h \
- C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/uart_select.h
+ C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/uart_select.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/uart.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h:
 
@@ -159,6 +165,8 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stat.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h:
@@ -182,6 +190,12 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/unistd.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/unistd.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/unistd.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/utime.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/utime.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
 
@@ -303,7 +317,7 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h:
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/termios.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/dirent.h:
 
@@ -339,9 +353,13 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/ringbuf.h:
+C:/msys32/home/heged/esp/esp-idf/components/esp_ringbuf/include/freertos/ringbuf.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_channel.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/uart_select.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/uart.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h:
 /home/heged/esp/esp-idf/components/vfs/./vfs_uart.c:

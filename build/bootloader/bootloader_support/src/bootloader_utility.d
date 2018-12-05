@@ -50,12 +50,14 @@ src/bootloader_utility.o: \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_flash_data_types.h \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_secure_boot.h \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_flash_encrypt.h \
- C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_flash_partitions.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_flash.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_random.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_config.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_common.h
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_flash.h \
+ C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_random.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_config.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_common.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_utility.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_sha.h
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_attr.h:
 
@@ -157,15 +159,19 @@ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_secur
 
 C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_flash_encrypt.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h:
-
 C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_flash_partitions.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_flash.h:
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_flash.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_random.h:
+C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_config.h:
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_random.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_config.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_common.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_utility.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_sha.h:
 /home/heged/esp/esp-idf/components/bootloader_support/src/bootloader_utility.c:

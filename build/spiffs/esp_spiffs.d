@@ -104,10 +104,14 @@ esp_spiffs.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/fcntl.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_default_fcntl.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stat.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/vfs/include/esp_vfs.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/utime.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/utime.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/termios.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/spi_flash.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/spiffs/spiffs_api.h
@@ -320,13 +324,21 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_default_fcntl.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/stat.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/vfs/include/esp_vfs.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/utime.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/utime.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/termios.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/spi_flash.h:
 

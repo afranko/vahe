@@ -43,6 +43,7 @@ src/fast_crypto/fast_crypto_internal.o: \
  C:/msys32/home/heged/esp/esp-idf/components/wpa_supplicant/include/crypto/md5_i.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/sha256.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/esp_config.h \
+ C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/esp_mem.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h
 
@@ -131,6 +132,8 @@ C:/msys32/home/heged/esp/esp-idf/components/wpa_supplicant/include/crypto/md5_i.
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/sha256.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/esp_config.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/esp_mem.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h:
 

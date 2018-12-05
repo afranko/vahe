@@ -27,7 +27,10 @@ esp32/rtc_time.o: \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc_cntl_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
- C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/timer_group_reg.h
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/timer_group_reg.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/soc_log.h \
+ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
+ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h:
 
@@ -84,4 +87,10 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc_cntl_reg.h
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/timer_group_reg.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/soc_log.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h:
 /home/heged/esp/esp-idf/components/soc/esp32/rtc_time.c:

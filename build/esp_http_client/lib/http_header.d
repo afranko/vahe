@@ -38,7 +38,8 @@ lib/http_header.o: \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/queue.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/http_utils.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h \
+ C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport_utils.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdlib.h:
 
@@ -117,4 +118,6 @@ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h:
 C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/http_utils.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport_utils.h:
 /home/heged/esp/esp-idf/components/esp_http_client/lib/http_header.c:

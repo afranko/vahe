@@ -21,6 +21,8 @@ src/nvs_api.o: \
  C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/src/nvs_storage.hpp \
  C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/include/nvs_flash.h \
  C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/include/nvs.h \
+ C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_partition.h \
+ C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
  C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/src/nvs_platform.hpp \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
@@ -73,8 +75,7 @@ src/nvs_api.o: \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
- C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_partition.h \
- C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/crc.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h
 
@@ -119,6 +120,10 @@ C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/src/nvs_storage.hpp:
 C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/include/nvs_flash.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/include/nvs.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_partition.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/src/nvs_platform.hpp:
 
@@ -224,9 +229,7 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_partition.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h:
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/crc.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
 

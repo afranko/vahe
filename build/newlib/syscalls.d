@@ -20,6 +20,7 @@ syscalls.o: C:/msys32/home/heged/esp/esp-idf/components/newlib/syscalls.c \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/unistd.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/unistd.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/unistd.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdlib.h \
@@ -124,6 +125,8 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/unistd.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/unistd.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/unistd.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h:
 

@@ -28,7 +28,8 @@ lib/http_utils.o: \
  C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/http_utils.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h \
+ C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport_utils.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h:
 
@@ -87,4 +88,6 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h:
 C:/msys32/home/heged/esp/esp-idf/components/esp_http_client/lib/include/http_utils.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/time.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/tcp_transport/include/esp_transport_utils.h:
 /home/heged/esp/esp-idf/components/esp_http_client/lib/http_utils.c:

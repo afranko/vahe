@@ -86,7 +86,7 @@ i2c.o: C:/msys32/home/heged/esp/esp-idf/components/driver/i2c.c \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/ringbuf.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp_ringbuf/include/freertos/ringbuf.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_access.h \
@@ -272,7 +272,7 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/ringbuf.h:
+C:/msys32/home/heged/esp/esp-idf/components/esp_ringbuf/include/freertos/ringbuf.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
 

@@ -41,6 +41,7 @@ src/fast_crypto/fast_aes-cbc.o: \
  C:/msys32/home/heged/esp/esp-idf/components/wpa_supplicant/include/crypto/aes_wrap.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/aes.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/esp_config.h \
+ C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/esp_mem.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/aes_alt.h \
@@ -128,6 +129,8 @@ C:/msys32/home/heged/esp/esp-idf/components/wpa_supplicant/include/crypto/aes_wr
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/aes.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/esp_config.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/esp_mem.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h:
 

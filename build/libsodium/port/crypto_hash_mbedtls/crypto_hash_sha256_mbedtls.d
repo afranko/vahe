@@ -23,6 +23,7 @@ port/crypto_hash_mbedtls/crypto_hash_sha256_mbedtls.o: \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/sha256.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/esp_config.h \
  C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h \
+ C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/esp_mem.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h \
@@ -73,6 +74,8 @@ C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/sha2
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/esp_config.h:
 
 C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/esp_mem.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h:
 

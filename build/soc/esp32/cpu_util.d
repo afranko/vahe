@@ -7,6 +7,12 @@ esp32/cpu_util.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/features.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/corebits.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/hal.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtensa-versions.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-isa.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/tie.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/assert.h \
@@ -16,7 +22,6 @@ esp32/cpu_util.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/_ansi.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/newlib.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/config.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-isa.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/reent.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/_ansi.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_types.h \
@@ -43,6 +48,18 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/corebits.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/hal.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtensa-versions.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-isa.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/tie.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h:
@@ -60,8 +77,6 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/_ansi.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/newlib.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/config.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-isa.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/reent.h:
 

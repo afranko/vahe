@@ -82,7 +82,8 @@ intr_alloc.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
- C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h
+ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_ipc.h
 
 C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h:
 
@@ -249,4 +250,6 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h:
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_ipc.h:
 /home/heged/esp/esp-idf/components/esp32/./intr_alloc.c:

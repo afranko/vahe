@@ -39,6 +39,7 @@ nghttp2/lib/nghttp2_frame.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/assert.h \
  C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/nghttp/nghttp2/lib/nghttp2_helper.h \
@@ -123,6 +124,8 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/assert.h:
 C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h:
 

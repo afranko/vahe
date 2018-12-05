@@ -1,8 +1,9 @@
 #ifndef COMMONS_H_
 #define COMMONS_H_
 
-#define TAG_MODE
-//#define ANCHOR_MODE
+//#define TAG_MODE
+#define ANCHOR_MODE
+//#define RFID_MODE
 
 #if (!defined TAG_MODE) && (!defined ANCHOR_MODE)
 	#error "MODE is undefined! Define TAG or ANCHOR MODE!"
@@ -77,7 +78,7 @@
 
 /* NEWS */
 
-#define MEASURE_TICKNUM			2000
+#define MEASURE_TICKNUM			2100
 #define BEACON_TICKNUM			100
 #define TS_TICKNUM				10
 #define RANGING_RX_TICKNUM		80

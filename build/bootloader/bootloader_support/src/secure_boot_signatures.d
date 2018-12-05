@@ -1,10 +1,10 @@
 src/secure_boot_signatures.o: \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/src/secure_boot_signatures.c \
  c:\msys32\home\heged\esp\workspace\aflegacy_vahe\build\include\sdkconfig.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_flash.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_flash.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h \
  C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_sha.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_sha.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
@@ -21,13 +21,13 @@ src/secure_boot_signatures.o: \
 
 c:\msys32\home\heged\esp\workspace\aflegacy_vahe\build\include\sdkconfig.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_flash.h:
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_flash.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_sha.h:
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_sha.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
 

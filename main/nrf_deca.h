@@ -6,6 +6,7 @@
 #include <inttypes.h>
 #include <stdbool.h>
 #include "math.h"
+#include "commons.h"
 
 #include "decadriver/deca_types.h"
 #include "decadriver/deca_device_api.h"
@@ -14,12 +15,25 @@
 #include "anchor/rtls.h"
 #include "anchor/comm_mac.h"
 
-#define DW1000_RST			5
-#define DW1000_IRQ			18
-#define DW1000_SCK_PIN		23
-#define DW1000_MISO_PIN		22
-#define DW1000_MOSI_PIN		21
-#define DW1000_SS_PIN		19
+/*
+    #define DW1000_RST			17
+    #define DW1000_IRQ			34
+    #define DW1000_SCK_PIN		21
+    #define DW1000_MISO_PIN		19
+    #define DW1000_MOSI_PIN		18
+    #define DW1000_SS_PIN		5
+*/
+
+
+//ANCHOR MODE
+
+    #define DW1000_RST			5
+    #define DW1000_IRQ			18
+    #define DW1000_SCK_PIN		23
+    #define DW1000_MISO_PIN		22
+    #define DW1000_MOSI_PIN		21
+    #define DW1000_SS_PIN		19
+
 
 typedef void (*response_receive_handler_t) (bool success, uint16_t src_address, uint16_t distance, uint8_t RxQ); //NOTE+TODO
 typedef void (*rtls_beacon_receive_handler_t) (uint16_t src_address, uint16_t hop_address, uint8_t hop_count);
@@ -56,5 +70,3 @@ int deca_twr_responder(void);
 void initShield(void);
 
 #endif /* DW1000_H_ */
-
-

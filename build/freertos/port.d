@@ -85,6 +85,8 @@ port.o: C:/msys32/home/heged/esp/esp-idf/components/freertos/port.c \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_panic.h \
+ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
+ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/portmux_impl.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/portable.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/portmux_impl.inc.h
@@ -260,6 +262,10 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h:
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_panic.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/portmux_impl.h:
 

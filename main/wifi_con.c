@@ -1,7 +1,12 @@
 #include "wifi_con.h"
+#include "send_tag_uwb.h"
+
+#include "commons.h"
 
 static EventGroupHandle_t wifi_event_group;
 const int CONNECTED_BIT = BIT0;
+
+#ifdef TAG_MODE
 
 //WIFI
 void wifi_connect()
@@ -68,12 +73,12 @@ bool wifi_init()
 
 	if(esp_wifi_sta_get_ap_info(&ap_info) != 0)
 	{
-		printf("Init: no connection!\n");
+		ets_printf("Init: no connection!\n");
 		ready = false;
 	}
 	else
 	{
-		printf("Init: connection ready!\n");
+		ets_printf("Init: connection ready!\n");
 		ready = true;
 	}
 
@@ -117,64 +122,8 @@ uint8_t wifi_check()
 bool socket_init()
 {
 	bool ready = 0;
-	struct sockaddr_in tcpServerAddr;
 
-	bzero(&tcpServerAddr, sizeof tcpServerAddr);
-
-	//Todo IP ADDRESS - 192 -> highest byte, 168 -> etc. etc.
-
-	tcpServerAddr.sin_addr.s_addr = htonl((((((10 << 8) | 0) << 8) | 0) << 8) | 111);//inet_addr(TCPServerIP);
-	tcpServerAddr.sin_family = AF_INET;
-	tcpServerAddr.sin_port = htons(PORT);
-
-	tcpSocket = socket(AF_INET, SOCK_STREAM, 0); //socket
-
-	//socketnyitas
-	int socketready = 0;
-	while(!socketready)
-	{
-		printf("Socketinit elso while ciklusa \n");
-		xEventGroupWaitBits(wifi_event_group,CONNECTED_BIT,false,true, (TickType_t)0x000000FFUL);
-		// print the local IP address
-		tcpip_adapter_ip_info_t ip_info;
-		ESP_ERROR_CHECK(tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_STA, &ip_info));
-		printf("IP Address:  %s\n", ip4addr_ntoa(&ip_info.ip));
-		printf("Subnet mask: %s\n", ip4addr_ntoa(&ip_info.netmask));
-		printf("Gateway:     %s\n", ip4addr_ntoa(&ip_info.gw));
-		printf("\n");
-
-		//socket
-		if(tcpSocket < 0)
-		{
-			printf("Sock: Failed to allocate socket.\n");
-			vTaskDelay(1000 / portTICK_PERIOD_MS);
-			continue;
-		}
-		else
-		{
-			printf("Sock: allocated socket\n");
-			socketready = 1;
-			//printf("Sock: socket ready\n");
-		}
-	}
-
-	//kapcsolodas
-	int connectionready = 0;
-	while(!connectionready)
-	{
-		printf("Socketinit masodik while ciklusa \n");
-		if(connect(tcpSocket, (struct sockaddr *)&tcpServerAddr , sizeof(tcpServerAddr)) != 0) //(struct sockaddr *)&tcpServerAddr
-		{
-			printf("Sock: socket connect failed errno=%d \n", errno);
-			vTaskDelay(1000 / portTICK_PERIOD_MS);
-			continue;
-		}
-		else
-		{
-			printf("Sock: connected \n");
-			connectionready = 1;
-		}
-	}
+	init_http_send();
 	ready = 1;
 	return ready;
 }
@@ -184,13 +133,14 @@ bool connection_init()
 	bool ready = false;
 	if(wifi_init())
 	{
-		printf("Con: socket allocation!\n");
-		socket_init();
+		//printf("Con: socket allocation!\n");
+		//socket_init();
+        init_http_send();
 
 	}
 	else
 	{
-		printf("Con: no connection!\n");
+		ets_printf("Con: no connection!\n");
 		ready = false;
 	}
 
@@ -204,7 +154,7 @@ bool connection_check()
 
 	if(code == 2)
 	{
-		printf("Con check: Socket relocation!\n");
+		/*printf("Con check: Socket relocation!\n");
 		close(tcpSocket);
 		if(socket_init())
 		{
@@ -212,12 +162,16 @@ bool connection_check()
 		}
 		else
 			printf("Con check: socket fail!\n");
+        */
+        cleanup_http_send();
+		init_http_send();
 	}
 	if(code == 1)
 		ready = true;
 	return ready;
 }
 
+#endif
 
 //TEST MAIN FUNCTION
 /*

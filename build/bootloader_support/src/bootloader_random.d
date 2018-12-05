@@ -1,12 +1,18 @@
 src/bootloader_random.o: \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/src/bootloader_random.c \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_random.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_random.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/cpu.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/_default_types.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/features.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/corebits.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/hal.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtensa-versions.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-isa.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/tie.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/wdev_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h \
@@ -17,7 +23,6 @@ src/bootloader_random.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/_ansi.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/newlib.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/config.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-isa.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/reent.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/_ansi.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_types.h \
@@ -36,11 +41,6 @@ src/bootloader_random.o: \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_dport_access.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/hal.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtensa-versions.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/tie.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/specreg.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime-core-state.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime-frames.h \
@@ -76,7 +76,7 @@ src/bootloader_random.o: \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/system.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_random.h:
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/bootloader_random.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/cpu.h:
 
@@ -89,6 +89,18 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/features.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/corebits.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/hal.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtensa-versions.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-isa.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/tie.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/wdev_reg.h:
 
@@ -109,8 +121,6 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/_ansi.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/newlib.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/config.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-isa.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/reent.h:
 
@@ -147,16 +157,6 @@ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_dport_access.h:
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_reg.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/hal.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtensa-versions.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/tie.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/specreg.h:
 

@@ -87,6 +87,7 @@ bt.o: C:/msys32/home/heged/esp/esp-idf/components/bt/bt.c \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/portmacro.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/core-macros.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_task.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_phy_init.h \
  C:/msys32/home/heged/esp/esp-idf/components/bt/include/esp_bt.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
@@ -279,6 +280,8 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/portmacro.
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/core-macros.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_task.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_phy_init.h:
 

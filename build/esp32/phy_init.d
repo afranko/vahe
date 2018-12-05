@@ -76,6 +76,8 @@ phy_init.o: C:/msys32/home/heged/esp/esp-idf/components/esp32/phy_init.c \
  C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/include/nvs.h \
  C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/include/nvs_flash.h \
  C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/include/nvs.h \
+ C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_partition.h \
+ C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h \
@@ -101,13 +103,21 @@ phy_init.o: C:/msys32/home/heged/esp/esp-idf/components/esp32/phy_init.c \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/queue.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_wifi_types.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_interface.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_event.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp_event/include/esp_event.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp_event/include/esp_event_base.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_event_legacy.h \
  C:/msys32/home/heged/esp/esp-idf/components/tcpip_adapter/include/tcpip_adapter.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/queue.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_wifi_types.h \
- C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/ip_addr.h \
- C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/opt.h \
- C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/port/lwipopts.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/opt.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/port/esp32/include/lwipopts.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/time.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/unistd.h \
@@ -120,22 +130,22 @@ phy_init.o: C:/msys32/home/heged/esp/esp-idf/components/esp32/phy_init.c \
  C:/msys32/home/heged/esp/esp-idf/components/vfs/include/sys/ioctl.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/select.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_task.h \
- C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/debug.h \
- C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/arch.h \
- C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/port/arch/cc.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/port/esp32/include/netif/dhcp_state.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/debug.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/arch.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/port/esp32/include/arch/cc.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/errno.h \
- C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/port/arch/sys_arch.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
- C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/port/arch/vfs_lwip.h \
- C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/def.h \
- C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/ip4_addr.h \
- C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/ip6_addr.h \
- C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/apps/dhcpserver.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/port/esp32/include/arch/sys_arch.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/port/esp32/include/arch/vfs_lwip.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/inttypes.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/def.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/ip6_addr.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/def.h \
+ C:/msys32/home/heged/esp/esp-idf/components/lwip/include/apps/dhcpserver/dhcpserver.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_wifi.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_wifi_crypto_types.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_wifi_os_adapter.h
@@ -294,6 +304,10 @@ C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/include/nvs_flash.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/include/nvs.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_partition.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
@@ -344,7 +358,21 @@ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_wifi_types.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_interface.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_event.h:
+C:/msys32/home/heged/esp/esp-idf/components/esp_event/include/esp_event.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp_event/include/esp_event_base.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_event_legacy.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/tcpip_adapter/include/tcpip_adapter.h:
 
@@ -352,11 +380,13 @@ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/queue.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_wifi_types.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/ip_addr.h:
+C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/opt.h:
+C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/port/lwipopts.h:
+C:/msys32/home/heged/esp/esp-idf/components/lwip/port/esp32/include/lwipopts.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/time.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/time.h:
 
@@ -382,37 +412,37 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/sys/select.h
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_task.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/debug.h:
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/arch.h:
+C:/msys32/home/heged/esp/esp-idf/components/lwip/port/esp32/include/netif/dhcp_state.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/port/arch/cc.h:
+C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/debug.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/lwip/port/esp32/include/arch/cc.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/platform_include/errno.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/errno.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/errno.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/port/arch/sys_arch.h:
+C:/msys32/home/heged/esp/esp-idf/components/lwip/port/esp32/include/arch/sys_arch.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h:
+C:/msys32/home/heged/esp/esp-idf/components/lwip/port/esp32/include/arch/vfs_lwip.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h:
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/inttypes.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h:
+C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/def.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h:
+C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
+C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/ip6_addr.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/port/arch/vfs_lwip.h:
+C:/msys32/home/heged/esp/esp-idf/components/lwip/lwip/src/include/lwip/def.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/def.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/ip4_addr.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/lwip/ip6_addr.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/lwip/include/lwip/apps/dhcpserver.h:
+C:/msys32/home/heged/esp/esp-idf/components/lwip/include/apps/dhcpserver/dhcpserver.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_wifi.h:
 

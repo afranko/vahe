@@ -59,6 +59,7 @@ typedef struct mac_send_mpu_message_t
 }mpuMessage;
 
 void init_http_send(void);
+void cleanup_http_send(void);
 void init_ranging_msg(rangingMessage *msg, uint16_t tag_id);
 void init_mpu_msg(mpuMessage *msg, uint16_t tag_id);
 void racking_ranging(rangingMessage *msg, uint16_t anchor, uint16_t dist, uint8_t rxq);

@@ -16,6 +16,10 @@ spiram.o: C:/msys32/home/heged/esp/esp-idf/components/esp32/spiram.c \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/lock.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/cdefs.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/string.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/param.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/syslimits.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/endian.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/param.h \
  C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_attr.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h \
@@ -29,6 +33,7 @@ spiram.o: C:/msys32/home/heged/esp/esp-idf/components/esp32/spiram.c \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/stdlib.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_spiram.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/spiram_psram.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
@@ -87,7 +92,8 @@ spiram.o: C:/msys32/home/heged/esp/esp-idf/components/esp32/spiram.c \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_dport_access.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/cache.h \
- C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_access.h
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_access.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_himem.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h:
 
@@ -123,6 +129,14 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/cdefs.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/string.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/param.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/syslimits.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/endian.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/param.h:
+
 C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/include/sdkconfig.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_attr.h:
@@ -148,6 +162,8 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/stdlib.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_spiram.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/spiram_psram.h:
 
@@ -266,4 +282,6 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_reg.h:
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/cache.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_access.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_himem.h:
 /home/heged/esp/esp-idf/components/esp32/./spiram.c:

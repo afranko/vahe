@@ -51,7 +51,10 @@ hwcrypto/sha.o: \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/corebits.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime-core-state.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime-frames.h \
- C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/hwcrypto_reg.h
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/hwcrypto_reg.h \
+ C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h:
 
@@ -156,4 +159,10 @@ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime-core-
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime-frames.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/hwcrypto_reg.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h:
 /home/heged/esp/esp-idf/components/esp32/hwcrypto/sha.c:

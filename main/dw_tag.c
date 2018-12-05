@@ -59,6 +59,7 @@ void rTimerCallback(TimerHandle_t pxTimer)
 	//ets_printf("%d", (uint32_t) pvTimerGetTimerID(pxTimer));
 	//ets_printf(" has stopped!\n");
 	rxtimeout_timeout_handler();
+
 }
 
 
@@ -104,7 +105,6 @@ void rxtimeout_timeout_handler(void)
 {
 	//if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
 		deca_twr_rxtimeout();
-
 		if(listen_to_beacon == 0)
 		{
 			if(err_cnter < 4) {

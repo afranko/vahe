@@ -86,13 +86,15 @@ sdmmc_transaction.o: \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/sdmmc_periph.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/sdmmc_pins.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/sdmmc_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/sdmmc_struct.h \
  C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/sdmmc_types.h \
  C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/sdmmc_defs.h \
- C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
  C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/sdmmc_host.h \
  C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/sdmmc_types.h \
  C:/msys32/home/heged/esp/esp-idf/components/driver/sdmmc_private.h
@@ -269,6 +271,12 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/sdmmc_periph.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/sdmmc_pins.h:
@@ -280,8 +288,6 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/sdmmc_struct.h
 C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/sdmmc_types.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/sdmmc_defs.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/sdmmc_host.h:
 

@@ -34,7 +34,8 @@ src/nvs_page.o: \
  C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
  C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/src/intrusive_list.h \
  C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/src/nvs_item_hash_list.hpp \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/crc.h
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/crc.h \
+ C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/src/nvs_ops.hpp
 
 C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/src/nvs_page.hpp:
 
@@ -105,4 +106,6 @@ C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/src/intrusive_list.h:
 C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/src/nvs_item_hash_list.hpp:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/crc.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/nvs_flash/src/nvs_ops.hpp:
 /home/heged/esp/esp-idf/components/nvs_flash/src/nvs_page.cpp:

@@ -101,8 +101,6 @@ spi_slave.o: \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/ringbuf.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
  C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h:
@@ -306,10 +304,6 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/limits.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/ringbuf.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h:
 /home/heged/esp/esp-idf/components/driver/./spi_slave.c:

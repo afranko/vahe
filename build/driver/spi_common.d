@@ -95,7 +95,8 @@ spi_common.o: \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/uart_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h \
- C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h
+ C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdatomic.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/string.h:
 
@@ -288,4 +289,6 @@ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdatomic.h:
 /home/heged/esp/esp-idf/components/driver/./spi_common.c:

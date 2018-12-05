@@ -1,6 +1,6 @@
 src/bootloader_flash.o: \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/src/bootloader_flash.c \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_flash.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_flash.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h \
  C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
  c:\msys32\home\heged\esp\workspace\aflegacy_vahe\build\include\sdkconfig.h \
@@ -32,7 +32,7 @@ src/bootloader_flash.o: \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/cache.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_access.h
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_flash.h:
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_flash.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h:
 

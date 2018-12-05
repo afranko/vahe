@@ -60,8 +60,10 @@ esp_timer_esp32.o: \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_task.h \
- C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
+ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_clk.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/esp_timer_impl.h \
@@ -69,7 +71,6 @@ esp_timer_esp32.o: \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/projdefs.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/portable.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/deprecated_definitions.h \
@@ -209,9 +210,13 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_task.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h:
 
@@ -226,8 +231,6 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc.h:
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/projdefs.h:
 

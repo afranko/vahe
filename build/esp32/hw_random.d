@@ -17,6 +17,10 @@ hw_random.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/lock.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/cdefs.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/string.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/param.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/syslimits.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/endian.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/param.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_attr.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_clk.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/wdev_reg.h \
@@ -76,6 +80,14 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/lock.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/cdefs.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/string.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/param.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/syslimits.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/endian.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/param.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_attr.h:
 

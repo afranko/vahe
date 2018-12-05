@@ -29,9 +29,14 @@ port/esp_bignum.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/stdlib.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/param.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/syslimits.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/endian.h \
+ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/param.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/bignum.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/bignum.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/esp_config.h \
+ C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/esp_mem.h \
  C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h \
@@ -96,7 +101,9 @@ port/esp_bignum.o: \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/task.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h \
+ C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdio.h:
 
@@ -156,11 +163,21 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h:
 
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/param.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/syslimits.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/endian.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/param.h:
+
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/bignum.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/bignum.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/mbedtls/esp_config.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/mbedtls/port/include/esp_mem.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h:
 
@@ -291,4 +308,8 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/list.h:
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/semphr.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/queue.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/driver/include/driver/periph_ctrl.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h:
 /home/heged/esp/esp-idf/components/mbedtls/port/esp_bignum.c:

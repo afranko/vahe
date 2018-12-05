@@ -25,6 +25,7 @@ nrf_deca.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/inttypes.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h \
+ C:/msys32/home/heged/esp/workspace/aflegacy_vahe/main/commons.h \
  C:/msys32/home/heged/esp/workspace/aflegacy_vahe/main/decadriver/deca_types.h \
  C:/msys32/home/heged/esp/workspace/aflegacy_vahe/main/decadriver/deca_device_api.h \
  C:/msys32/home/heged/esp/workspace/aflegacy_vahe/main/decadriver/deca_regs.h \
@@ -107,7 +108,8 @@ nrf_deca.o: \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_pins.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_reg.h \
- C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_struct.h
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_struct.h \
+ C:/msys32/home/heged/esp/esp-idf/components/heap/include/esp_heap_trace.h
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/math.h:
 
@@ -158,6 +160,8 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/inttypes.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h:
+
+C:/msys32/home/heged/esp/workspace/aflegacy_vahe/main/commons.h:
 
 C:/msys32/home/heged/esp/workspace/aflegacy_vahe/main/decadriver/deca_types.h:
 
@@ -324,4 +328,6 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_pins.h:
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_reg.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_struct.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/heap/include/esp_heap_trace.h:
 /home/heged/esp/workspace/aflegacy_vahe/main/./nrf_deca.c:

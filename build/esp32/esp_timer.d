@@ -37,12 +37,6 @@ esp_timer.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_timer.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_task.h \
- C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
- C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
- C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h \
- C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h \
- C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/hal.h \
@@ -54,6 +48,13 @@ esp_timer.o: \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_context.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/corebits.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime-frames.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
+ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h \
+ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
+ C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
+ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/projdefs.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/portable.h \
  C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/deprecated_definitions.h \
@@ -167,18 +168,6 @@ C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_timer.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_task.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
-
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h:
@@ -200,6 +189,20 @@ C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/xtensa_con
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/corebits.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/xtensa/xtruntime-frames.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_assert.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/freertos/include/freertos/projdefs.h:
 

@@ -24,8 +24,15 @@
 #include "lwip/dns.h"
 #include "lwip/ip4_addr.h"
 
-#define SSID "AITIA_EMELET"
-#define PASSPHARSE "sssgggaaa"
+#include "commons.h"
+
+#define SSID "KC_janiini" //TODO check if its OK
+#define PASSPHARSE "kyllikki"
+
+//#define SSID "Kobanya_Ujhegy_Free_WiFi"
+//#define PASSPHARSE "szapunci2"
+
+
 #define TCPServerIP "192.168.1.200" //nincs hasznalva
 #define PORT 6767
 

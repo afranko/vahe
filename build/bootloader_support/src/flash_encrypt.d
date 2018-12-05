@@ -16,7 +16,7 @@ src/flash_encrypt.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/types.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_flash.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_flash.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/_intsup.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_err.h \
@@ -30,7 +30,6 @@ src/flash_encrypt.o: \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h \
  C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h \
  C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_random.h \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_image_format.h \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_flash_partitions.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_flash_data_types.h \
@@ -47,6 +46,8 @@ src/flash_encrypt.o: \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/secure_boot.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/rtc_wdt.h \
+ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc_cntl_reg.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/cache.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/dport_access.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/esp_dport_access.h \
@@ -96,7 +97,7 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/machine/types.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/sys/sched.h:
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_flash.h:
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/bootloader_flash.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/stdint.h:
 
@@ -123,8 +124,6 @@ C:/msys32/home/heged/esp/esp-idf/components/newlib/include/alloca.h:
 C:/msys32/home/heged/esp/esp-idf/components/newlib/include/assert.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/spi_flash/include/esp_spi_flash.h:
-
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/bootloader_random.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include/esp_image_format.h:
 
@@ -157,6 +156,10 @@ C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log_internal.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/secure_boot.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/include/soc/rtc_wdt.h:
+
+C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/rtc_cntl_reg.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/cache.h:
 

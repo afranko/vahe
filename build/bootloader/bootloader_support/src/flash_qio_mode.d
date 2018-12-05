@@ -1,6 +1,6 @@
 src/flash_qio_mode.o: \
  C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/src/flash_qio_mode.c \
- C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/flash_qio_mode.h \
+ C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/flash_qio_mode.h \
  C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h \
  c:\msys32\home\heged\esp\workspace\aflegacy_vahe\build\include\sdkconfig.h \
  C:/msys32/home/heged/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
@@ -16,7 +16,7 @@ src/flash_qio_mode.o: \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/spi_struct.h \
  C:/msys32/home/heged/esp/esp-idf/components/soc/esp32/include/soc/efuse_reg.h
 
-C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_priv/flash_qio_mode.h:
+C:/msys32/home/heged/esp/esp-idf/components/bootloader_support/include_bootloader/flash_qio_mode.h:
 
 C:/msys32/home/heged/esp/esp-idf/components/log/include/esp_log.h:
 

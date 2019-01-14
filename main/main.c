@@ -69,13 +69,14 @@ void vTimerCallback(TimerHandle_t pxTimer)
 	#ifndef TAG_MODE
 	case 10:
 		gpio_set_level(GPIO_NUM_2, blinker);
-		ets_printf("BLINK!\n");
+		//ets_printf("BLINK!\n\n");
 		blinker = !blinker;
 		break;
 	#endif
 	case 1:
 		//if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
 			beacon_timeout_handler();
+			//ets_printf("TIMER NO.1\n\n");
 		//	xSemaphoreGive(xSemaphore);
 		//}
 		break;
@@ -352,6 +353,7 @@ static void start_anchor()
 
     for (;;)
     {
+		//ets_printf("It's on!\n\n");
     	//if(xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
 			if(gpio_get_level(DW1000_IRQ) == 1 && !dwt_isr_in_progress)
 			{

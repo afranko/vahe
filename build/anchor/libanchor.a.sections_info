@@ -1,0 +1,254 @@
+In archive C:/msys32/home/heged/esp/workspace/aflegacy_vahe/build/anchor/libanchor.a:
+
+rtls.o:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.handle_dist_msg 00000008  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .literal.calculate_distance 00000068  00000000  00000000  0000003c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.rtls_get_rx_quality_information 00000098  00000000  00000000  000000a4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.handle_poll_msg 00000014  00000000  00000000  0000013c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.handle_resp_msg 00000014  00000000  00000000  00000150  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.handle_final_msg 00000018  00000000  00000000  00000164  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.rtls_init 00000004  00000000  00000000  0000017c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .literal.rtls_compose_poll_msg 00000014  00000000  00000000  00000180  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .literal.rtls_handle_message 0000001c  00000000  00000000  00000194  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .text         00000000  00000000  00000000  000001b0  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 10 .data         00000000  00000000  00000000  000001b0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 11 .bss          00000000  00000000  00000000  000001b0  2**0
+                  ALLOC
+ 12 .text.handle_dist_msg 0000001a  00000000  00000000  000001b0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .text.calculate_distance 000000ff  00000000  00000000  000001cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .text.rtls_get_rx_quality_information 0000019b  00000000  00000000  000002cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .text.handle_poll_msg 00000118  00000000  00000000  00000468  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 16 .text.handle_resp_msg 00000190  00000000  00000000  00000580  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .text.handle_final_msg 00000144  00000000  00000000  00000710  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .text.rtls_init 0000000b  00000000  00000000  00000854  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .text.rtls_compose_poll_msg 0000008d  00000000  00000000  00000860  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .text.rtls_handle_message 00000079  00000000  00000000  000008f0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .bss.last_subtype 00000001  00000000  00000000  00000969  2**0
+                  ALLOC
+ 22 .bss._user_addr 00000002  00000000  00000000  0000096a  2**1
+                  ALLOC
+ 23 .debug_frame  000000e8  00000000  00000000  0000096c  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 24 .debug_info   00000a96  00000000  00000000  00000a54  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 25 .debug_abbrev 0000025a  00000000  00000000  000014ea  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 26 .debug_loc    000005e1  00000000  00000000  00001744  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 27 .debug_aranges 00000060  00000000  00000000  00001d25  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 28 .debug_ranges 00000050  00000000  00000000  00001d85  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 29 .debug_line   000005c5  00000000  00000000  00001dd5  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 30 .debug_str    0000057f  00000000  00000000  0000239a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 31 .comment      0000003c  00000000  00000000  00002919  2**0
+                  CONTENTS, READONLY
+ 32 .xtensa.info  00000038  00000000  00000000  00002955  2**0
+                  CONTENTS, READONLY
+ 33 .xt.lit       00000048  00000000  00000000  0000298d  2**0
+                  CONTENTS, RELOC, READONLY
+ 34 .xt.prop      000002f4  00000000  00000000  000029d5  2**0
+                  CONTENTS, RELOC, READONLY
+
+comm_mac.o:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.mac_send_from_tx_queue 00000020  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.mac_send_ranging_message 00000020  00000000  00000000  00000054  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.handle_rx_packet 00000028  00000000  00000000  00000074  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.mac_init 0000001c  00000000  00000000  0000009c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.mac_txcallback_impl 00000010  00000000  00000000  000000b8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.mac_rxcallback_impl 00000038  00000000  00000000  000000c8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.mac_transmit 00000008  00000000  00000000  00000100  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .literal.mac_receive_poll 00000008  00000000  00000000  00000108  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .literal.mac_get_addr 00000004  00000000  00000000  00000110  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .literal.mac_start_ranging 00000018  00000000  00000000  00000114  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .literal.tfra_func 0000000c  00000000  00000000  0000012c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 11 .literal.mac_get_tx_buffer 00000008  00000000  00000000  00000138  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 12 .literal.mac_transmit_beacon 00000014  00000000  00000000  00000140  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .literal.mac_transmit_poll 00000004  00000000  00000000  00000154  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .literal.mac_send_results 00000010  00000000  00000000  00000158  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .literal.mac_set_next_hop_info 00000004  00000000  00000000  00000168  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 16 .literal.mac_free_buffer 00000008  00000000  00000000  0000016c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .text         00000000  00000000  00000000  00000174  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 18 .data         00000000  00000000  00000000  00000174  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 19 .bss          00000000  00000000  00000000  00000174  2**0
+                  ALLOC
+ 20 .text.mac_send_from_tx_queue 00000054  00000000  00000000  00000174  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .rodata.str1.4 0000009d  00000000  00000000  000001c8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 22 .text.mac_send_ranging_message 00000070  00000000  00000000  00000268  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 23 .text.handle_rx_packet 0000009d  00000000  00000000  000002d8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 24 .text.mac_init 0000003c  00000000  00000000  00000378  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 25 .text.mac_txcallback_impl 00000037  00000000  00000000  000003b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 26 .text.mac_rxcallback_impl 000000ae  00000000  00000000  000003ec  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 27 .text.mac_transmit 00000012  00000000  00000000  0000049c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 28 .text.mac_receive_poll 00000010  00000000  00000000  000004b0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 29 .text.mac_get_addr 0000000b  00000000  00000000  000004c0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 30 .text.mac_start_ranging 0000003a  00000000  00000000  000004cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 31 .text.tfra_func 00000018  00000000  00000000  00000508  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 32 .text.mac_get_tx_buffer 00000019  00000000  00000000  00000520  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 33 .text.mac_transmit_beacon 00000053  00000000  00000000  0000053c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 34 .text.mac_transmit_poll 0000000b  00000000  00000000  00000590  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 35 .text.mac_send_results 00000072  00000000  00000000  0000059c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 36 .text.mac_set_next_hop_info 0000000c  00000000  00000000  00000610  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 37 .text.mac_free_buffer 00000010  00000000  00000000  0000061c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 38 .data.mac_tx_queue 00000008  00000000  00000000  0000062c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, DATA
+ 39 .data.mac_rx_queue 00000008  00000000  00000000  00000634  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, DATA
+ 40 .data.mac_memory_pool 00000008  00000000  00000000  0000063c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, DATA
+ 41 .bss.nwk_next_hop_data 00000008  00000000  00000000  00000644  2**2
+                  ALLOC
+ 42 .bss.mac_rtls_tx_flag 00000001  00000000  00000000  00000644  2**0
+                  ALLOC
+ 43 .bss._mac_seq_id 00000001  00000000  00000000  00000644  2**0
+                  ALLOC
+ 44 .bss._mac_addr 00000002  00000000  00000000  00000644  2**1
+                  ALLOC
+ 45 .bss._rtls_buffer 0000001e  00000000  00000000  00000644  2**2
+                  ALLOC
+ 46 .debug_frame  000001a8  00000000  00000000  00000644  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 47 .debug_info   00000d89  00000000  00000000  000007ec  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 48 .debug_abbrev 00000324  00000000  00000000  00001575  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 49 .debug_loc    0000032e  00000000  00000000  00001899  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 50 .debug_aranges 000000a0  00000000  00000000  00001bc7  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 51 .debug_ranges 00000090  00000000  00000000  00001c67  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 52 .debug_line   000005ea  00000000  00000000  00001cf7  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 53 .debug_str    00000748  00000000  00000000  000022e1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 54 .comment      0000003c  00000000  00000000  00002a29  2**0
+                  CONTENTS, READONLY
+ 55 .xtensa.info  00000038  00000000  00000000  00002a65  2**0
+                  CONTENTS, READONLY
+ 56 .xt.lit       00000088  00000000  00000000  00002a9d  2**0
+                  CONTENTS, RELOC, READONLY
+ 57 .xt.prop      00000540  00000000  00000000  00002b25  2**0
+                  CONTENTS, RELOC, READONLY
+
+queue.o:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.buffer_alloc 00000010  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.buffer_free 0000000c  00000000  00000000  00000044  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.queue_push 00000010  00000000  00000000  00000050  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.queue_pop 00000010  00000000  00000000  00000060  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .text         00000000  00000000  00000000  00000070  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  5 .data         00000000  00000000  00000000  00000070  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  6 .bss          00000000  00000000  00000000  00000070  2**0
+                  ALLOC
+  7 .text.buffer_alloc 00000074  00000000  00000000  00000070  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .text.buffer_pool_init 00000023  00000000  00000000  000000e4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .text.buffer_free 00000020  00000000  00000000  00000108  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .text.buffer_length 0000000b  00000000  00000000  00000128  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 11 .text.queue_push 00000050  00000000  00000000  00000134  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 12 .text.queue_pop 00000045  00000000  00000000  00000184  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .data.myMutexX 00000008  00000000  00000000  000001cc  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+ 14 .debug_frame  000000a0  00000000  00000000  000001d4  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 15 .debug_info   00000424  00000000  00000000  00000274  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 16 .debug_abbrev 00000158  00000000  00000000  00000698  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 17 .debug_loc    000001ea  00000000  00000000  000007f0  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 18 .debug_aranges 00000048  00000000  00000000  000009da  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 19 .debug_ranges 00000038  00000000  00000000  00000a22  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 20 .debug_line   000002e4  00000000  00000000  00000a5a  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 21 .debug_str    000002cd  00000000  00000000  00000d3e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 22 .comment      0000003c  00000000  00000000  0000100b  2**0
+                  CONTENTS, READONLY
+ 23 .xtensa.info  00000038  00000000  00000000  00001047  2**0
+                  CONTENTS, READONLY
+ 24 .xt.lit       00000020  00000000  00000000  0000107f  2**0
+                  CONTENTS, RELOC, READONLY
+ 25 .xt.prop      000001a4  00000000  00000000  0000109f  2**0
+                  CONTENTS, RELOC, READONLY

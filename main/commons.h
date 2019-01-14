@@ -1,8 +1,8 @@
 #ifndef COMMONS_H_
 #define COMMONS_H_
 
-//#define TAG_MODE
-#define ANCHOR_MODE
+#define TAG_MODE
+//#define ANCHOR_MODE
 //#define RFID_MODE
 
 #if (!defined TAG_MODE) && (!defined ANCHOR_MODE)
